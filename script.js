@@ -1,0 +1,41 @@
+ScrollReveal({ 
+    reset: true,
+    distance: '30px',
+    duration: 900,
+    delay: 200
+});
+
+ScrollReveal().reveal('.estetica-logo', { origin: 'top' });
+ScrollReveal().reveal('.estetica-texto', { origin: 'bottom' });
+ScrollReveal().reveal('.container-login', { origin: 'right' });
+ScrollReveal().reveal('.login-text', { origin: 'top' });
+ScrollReveal().reveal('.div-line', { origin: 'bottom' });
+ScrollReveal().reveal('.prod-by', { origin: 'left' });
+
+
+
+
+// Verifica se o som já foi reproduzido
+var somReproduzido = false;
+
+// Função para reproduzir o som
+function reproduzirSom() {
+    // Verifica se o som já foi reproduzido
+    if (!somReproduzido) {
+        // Obtém o elemento de áudio
+        var audio = document.getElementById('som');
+
+        // Define o volume desejado (0.0 a 1.0)
+        audio.volume = 0.3; // Exemplo: ajuste para 50% de volume
+
+
+        // Reproduz o som
+        audio.play();
+
+        // Atualiza a flag indicando que o som foi reproduzido
+        somReproduzido = true;
+    }
+}
+
+// Adiciona um ouvinte de eventos para carregamento ou recarregamento da página
+window.addEventListener('load', reproduzirSom);
