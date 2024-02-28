@@ -46,20 +46,20 @@ body {
     height: 90%;
 }
 
-h1 {
+.container-inicio h1 {
     font-family: "Poppins", sans-serif;
     color: white;
     font-size: 4.8rem;
     font-weight: 200;
 }
 
-h2 {
+.container-inicio h2 {
     font-family: "Poppins", sans-serif;
     color: white;
     font-size: 2rem;
 }
 
-h4 {
+.container-inicio h4 {
     font-family: "Poppins", sans-serif;
     color: #a2a59c;
     font-weight: 400;
@@ -67,7 +67,7 @@ h4 {
     margin-top: 23px;
 }
 
-form {
+.container-login form {
     background-color: aqa;
     width: 26rem;
     height: 13rem;
@@ -78,7 +78,7 @@ form {
     flex-wrap: wrap;
 }
 
-input {
+.container-login input {
     border-radius: 7px;
     border: solid #5a5a5a 1px;
     padding: 0.6rem;
@@ -108,7 +108,7 @@ input {
 }
 
 
-img {
+.container-inicio img {
     width: 62%;
 }
 
@@ -157,6 +157,38 @@ img {
     border: solid #5a5a5a 1px;
 }
 
+.bx-show {
+    position: absolute;
+    top: 8.2rem;
+    left: 23.5rem;
+    color: #5a5a5a;
+    transition: .2s ease;
+    font-size: 2rem;
+}
+
+.bx-show:hover {
+    font-size: 2.1rem;
+    cursor: pointer;
+    transform: translate(-1px);
+    color: #fff;
+}
+
+.bx-hide {
+    position: absolute;
+    top: 8.2rem;
+    left: 23.5rem;
+    color: #5a5a5a;
+    transition: .2s ease;
+    font-size: 2rem;
+}
+
+.bx-hide:hover {
+    font-size: 2.1rem;
+    cursor: pointer;
+    transform: translate(-1px);
+    color: #fff;
+}
+
 .div-line {
     background-color:#121212 ;
     width: 16rem;
@@ -195,7 +227,7 @@ img {
         transform: translateY(-4rem);
     }
 
-    form {
+    .container-login form {
         background-color: aqa;
         width: 25rem;
         height: 13rem;
@@ -206,7 +238,7 @@ img {
         flex-wrap: wrap;
     }
 
-    input {
+    .container-login input {
         border-radius: 7px;
         border: solid #5a5a5a 1px;
         padding: 0.6rem;
@@ -228,16 +260,49 @@ img {
         transition: .2s ease;
     }
 
-    img {
+    .container-inicio img {
         width: 150%;
     }
 
-    h1 {
+    .container-inicio h1 {
         font-family: "Poppins", sans-serif;
         color: white;
         font-size: 3rem;
         font-weight: 200;
     }
+
+    .bx-show {
+        position: absolute;
+        top: 8.2rem;
+        left: 22.5rem;
+        color: #5a5a5a;
+        transition: .2s ease;
+        font-size: 2rem;
+    }
+    
+    .bx-show:hover {
+        font-size: 2.1rem;
+        cursor: pointer;
+        transform: translate(-1px);
+        color: #fff;
+    }
+    
+    .bx-hide {
+        position: absolute;
+        top: 8.2rem;
+        left: 22.5rem;
+        color: #5a5a5a;
+        transition: .2s ease;
+        font-size: 2rem;
+    }
+    
+    .bx-hide:hover {
+        font-size: 2.1rem;
+        cursor: pointer;
+        transform: translate(-1px);
+        color: #fff;
+    }
+    
 }
 
 @media (max-width: 405px) {
@@ -253,18 +318,18 @@ img {
     }
 
     .container-login {
-        transform: translateY(-16px);
+        transform: translateY(-13px);
     }
 
-    img {
+    .container-inicio img {
         width: 130%;
     }
 
-    h1 {
+    .container-inicio h1 {
         font-size: 2.4rem;
     }
 
-    form {
+    .container-login form {
         background-color: aqa;
         width: 22rem;
         height: 13rem;
@@ -275,7 +340,7 @@ img {
         flex-wrap: wrap;
     }
 
-    input {
+    .container-login input {
         border-radius: 7px;
         border: solid #5a5a5a 1px;
         padding: 0.6rem;
@@ -295,6 +360,38 @@ img {
         font-family: "Poppins", sans-serif;
         font-weight: bold;
         transition: .2s ease;
+    }
+
+    .bx-show {
+        position: absolute;
+        top: 8.2rem;
+        left: 19.7rem;
+        color: #5a5a5a;
+        transition: .2s ease;
+        font-size: 2rem;
+    }
+    
+    .bx-show:hover {
+        font-size: 2.1rem;
+        cursor: pointer;
+        transform: translate(-1px);
+        color: #fff;
+    }
+    
+    .bx-hide {
+        position: absolute;
+        top: 8.2rem;
+        left: 19.7rem;
+        color: #5a5a5a;
+        transition: .2s ease;
+        font-size: 2rem;
+    }
+    
+    .bx-hide:hover {
+        font-size: 2.1rem;
+        cursor: pointer;
+        transform: translate(-1px);
+        color: #fff;
     }
 }
 
@@ -412,11 +509,33 @@ ul li.item-menu a .icon > i {
     margin-left: 10px;
 }
 
-.teste {
-    height: 10000px;
-    width: 100px;
-    background-color: aqua;
+.container-footer {
+    z-index: 6;
+    position: fixed;
+    background-color: #000;
+    top: 95vh;
+    left: 0;
+    width: 100vw;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.container-footer a {
+    color: #fff;
+    font-size: 20px;
+    transition: .2s ease;
+}
+
+/* .container-footer a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    box-shadow: inset 0 0 5px #fff;
+    border-radius: 10px;
+    padding: 5px 10px;
+} */
+
 
 /* ========================================= ESTRUTURAÇÃO E ESTILIZAÇÃO DA PAGINA HOME ==================================== */
 
@@ -568,4 +687,30 @@ table, th, td {
 
 
 /* ESTILIZAÇÃO DA PAGINA DE CADASTRO */
+
+.container-form-cadastro {
+    position: absolute;
+    top: 7rem;
+    left: 6rem;
+    width: 93vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.label-cadastro {
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 1rem;
+}
+
+.label-cadastro p {
+    font-size: 22px;
+    font-weight: 500;
+}
 

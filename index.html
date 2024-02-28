@@ -9,6 +9,7 @@
 </head>
 <body>
 
+   
     <div class="container-inicio">
         <div class="container-simbolo">
             <img src="simbolo.png" alt="" class="estetica-logo">
@@ -22,7 +23,8 @@
                     <div class="box-user-ico">
                         <i class='bx bx-user' id="user-icon"></i>
                     </div>
-                <input type="text" name="senha" id="senha" placeholder="Senha..." required>
+                <input type="password" name="senha" id="senha" placeholder="Senha..." required>
+                <label for="senha"> <i class='bx bx-show'id="MostrarSenha" onclick="MostrarSenha()"></i></label>
                     <div class="box-lock-ico">
                         <i class='bx bx-lock-alt'></i>
                     </div>
@@ -31,6 +33,7 @@
             <div class="div-line"></div>
             <h4 class="prod-by">Uma produção Can Say</h4>
         </div>
+        
     </div>
 
     <audio id="som" src="som.mp3" preload="auto"></audio>

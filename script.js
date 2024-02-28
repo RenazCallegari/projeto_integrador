@@ -74,3 +74,24 @@ var menuSide = document.querySelector('.sidebar')
 btnExp.addEventListener('click', function(){
     menuSide.classList.toggle('expandir')
 })
+
+
+
+
+
+// ========================FUNÇÃO PARA MOSTRAR A SENHA================== 
+
+function MostrarSenha(){
+    var passwordInput = document.getElementById("senha");
+    var showPasswordButton = document.getElementById("MostrarSenha");
+
+    
+        if (passwordInput.type === "password") {
+            passwordInput.setAttribute('type','text');
+            showPasswordButton.classList.replace('bx-show','bx-hide');
+        } else {
+            passwordInput.setAttribute('type','password');
+            showPasswordButton.classList.replace('bx-hide','bx-show');
+        }
+;
+}
