@@ -95,3 +95,38 @@ function MostrarSenha(){
         }
 ;
 }
+
+/*================= JANELA MODAL DE LOGIN ===================*/
+
+function abrirPopup() {
+    const popup = document.getElementById("janela-popup")
+    popup.classList.add('abrir')
+
+    popup.addEventListener('click', (e) => {
+        if(e.target.id == 'fechar' || e.target.id == 'janela-popup'){
+            popup.classList.remove('abrir')
+        }
+    })
+}
+
+function fecharPopup() {
+    const popup = document.getElementById("janela-popup")
+
+    popup.addEventListener('click', (e) => {
+            popup.classList.remove('abrir')
+    })
+}
+
+
+/*================= JANELA MODAL DE LOGIN ===================*/
+
+function abrirModal() {
+    const modal = document.getElementById("janela-modal")
+    modal.classList.add('abrir')
+
+    modal.addEventListener('click', (e) => {
+        if(e.target.id == 'fechar' || e.target.id == 'janela-modal'){
+            modal.classList.remove('abrir')
+        }
+    })
+}

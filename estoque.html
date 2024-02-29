@@ -15,6 +15,18 @@
 </head>
 <body>
 
+
+    
+    <div class="container-modal" id="janela-modal">
+        <div class="janela-modal">
+            <p>Deseja Realmente sair?</p>
+            <div class="container-btn">
+                <button class="btn" id="fechar" onclick="fecharPopup()">Voltar</button>
+                <button class="btn" id="logoff">Sair</button>
+            </div>
+        </div>
+    </div>
+
     <nav class="sidebar">
        
         <div class="btn-expandir">
@@ -50,13 +62,19 @@
     
     </nav>
 
+    <!-- HEADER -->
     <header>
         <div class="container-header">
             <div class="container-user-box">
-                <i class='bx bx-user-circle'></i>
+                <i class='bx bx-user-circle' id="btn-usuario" onclick="abrirPopup()"></i>
             </div>
         </div>
-
+        <div class="container-logoff" id="janela-popup">
+            <i class='bx bxs-up-arrow'></i>
+            <div class="container-box-logoff">
+                <a href="#" class="btn-sair" onclick="abrirModal()">Sair</a>
+            </div>
+        </div>
     </header>
 
 
