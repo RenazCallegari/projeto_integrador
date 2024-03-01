@@ -91,5 +91,6 @@ if (($estoque = fopen("estoque_2027.csv", "r")) !== FALSE) {
     }
     fclose($estoque);
 }
-$sql
+//Após criar todos os dados presentes nas tabelas exclui a si mesmo (arquivo).
+unlink('createdatasdb.php');
 ?>

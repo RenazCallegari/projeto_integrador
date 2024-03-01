@@ -10,6 +10,11 @@ if (isset($_SESSION["id_usuario"]) AND $_SESSION["id_usuario"] =! 1){
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){
     $enviarEmail = isset($_POST["email"]) ? $_POST["email"] : "";
+    if($enviarEmail != '' AND filter_var($enviarEmail, FILTER_VALIDATE_EMAIL)){
+        mail($enviarEmail,"Convite de cadastro no sistema",random_int())
+    } else {
+        
+    }
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){

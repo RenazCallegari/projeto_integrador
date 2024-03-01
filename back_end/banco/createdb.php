@@ -97,7 +97,20 @@ if($conn->query($sql)){
 } else {
     echo "Não deu certo ಥ_ಥ você não criou a tabela estoque! <br>";
 }
+
+$sql = "CREATE TABLE IF NOT EXISTS email(
+    id_email INT AUTO_INCREMENT PRIMARY KEY,
+    email varchar(255) NOT NULL,
+    token varchar(255) NOT NULL,
+    validade date NOT NULL
+)";
  
+if($conn->query($sql)){
+    echo "Deu certo ᕙ(`▿´)ᕗ você criou a tabela estoque! <br>";
+} else {
+    echo "Não deu certo ಥ_ಥ você não criou a tabela estoque! <br>";
+}
+
 //Encerra a conexao.
 $conn->close();
  
