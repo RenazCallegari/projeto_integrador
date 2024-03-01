@@ -36,7 +36,7 @@ $conn->select_db($bd);
 //para que nao crie um conflito foi criado a funcao select_db cuja finalidade e servir como uma traducao do USE de SQL.
 
 //Cria o nosso usuário admin
-$sql = "INSERT INTO usuario (usuario, password, curso, estado) VALUES ('Admin', '159753', 'T.I', 'Ativo')";
+$sql = "INSERT INTO usuario (usuario, password, curso, estado) VALUES ('Admin', PASSWORD('159753'), 'T.I', 'Ativo')";
 
 //Executa o comando criado recentemente.
 if($conn->query($sql)){

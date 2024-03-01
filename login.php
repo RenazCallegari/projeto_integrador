@@ -6,19 +6,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $passwordDigitado = isset($_POST["senha"]) ? $_POST["senha"] : "";
 
     if($userDigitado != "" && $passwordDigitado != ""){
-        $sql = "SELECT * FROM usuarios WHERE login = '$userDigitado' AND password = '$passwordDigitado'";
+        $sql = "SELECT * FROM usuario WHERE usuario = '$userDigitado' AND password = PASSWORD('$passwordDigitado')";
         $result = $conn->query($sql);
 
-        if($result && $result->num_rows > 0){
+            if($result && $result->num_rows > 0){
             $row = $result->fetch_assoc();
-            $_SESSION["id_usuario"] = $row["id"];
-            $_SESSION["usuario_autenticado"] = $row["login"];
+            $_SESSION["id_usuario"] = $row["id_usuario"];
+            $_SESSION["usuario_autenticado"] = $row["usuario"];
             header("Location: home.php");
             exit();
         } else {
             echo "<div class='alert alert-danger' role='alert'>Usuário ou senha incorretos.</div>";
         }
     }
+}
+if(isset($_SESSION["id_usuario"])){
+    header("Location: home.php");
+    exit();
 }
 ?>
 

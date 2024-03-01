@@ -1,7 +1,7 @@
 <?php
 include "connect.php";
 
-$sql = "SELECT * FROM estoque WHERE id_usuario = '{$_SESSION['id_usuario']}' AND quant = quant_min";
+$sql = "SELECT * FROM estoque";
 $resul = $conn->query($sql);
 
 $countQuant = 0;
@@ -15,7 +15,7 @@ date_default_timezone_set('America/Sao_Paulo');
 setlocale(LC_TIME, 'pt_BR', 'ptb');
 
 
-$sql2 = "SELECT * FROM estoque WHERE id_usuario = '{$_SESSION['id_usuario']}' AND validade BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 90 DAY)";
+$sql2 = "SELECT * FROM produto WHERE validade BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 90 DAY)";
 
 $resul2 = $conn->query($sql2);
 
@@ -26,7 +26,7 @@ if ($resul2->num_rows > 0) {
     }
 }
 
-$sql3 = "SELECT * FROM estoque WHERE id_usuario = '{$_SESSION['id_usuario']}' AND validade BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 30 DAY)";
+$sql3 = "SELECT * FROM produto WHERE validade BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 30 DAY)";
 $resul3 = $conn->query($sql3);
 
 $countTrinta = 0;
@@ -35,8 +35,8 @@ if ($resul3->num_rows > 0) {
         $countTrinta = $countTrinta + 1;
     }
 }
-
-$sql4 = "SELECT * FROM estoque WHERE estado='teste' order by usos DESC LIMIT 1";
+/*
+$sql4 = "SELECT * FROM produto WHERE estado='teste' order by usos DESC LIMIT 1";
 $resul4 = $conn->query($sql4);
 
 $produtosMaisUsado = array();
@@ -48,7 +48,7 @@ if ($resul4->num_rows > 0) {
     }
 }
 
-$sql5 = "SELECT * FROM estoque WHERE estado='teste' order by usos Asc LIMIT 1";
+$sql5 = "SELECT * FROM produto WHERE estado='teste' order by usos Asc LIMIT 1";
 $resul5 = $conn->query($sql5);
 
 $produtosMenosUsado = array();
@@ -58,7 +58,12 @@ if ($resul5->num_rows > 0) {
         $produtosMenosUsado[] = $row;
         $countMenosUsado = $countMenosUsado + 1;
     }
+*/
+if (isset($_SESSION['texto_alerta'])){
+    echo '<div class="">' . $_SESSION['texto_alerta'] . '</div>';
+    unset($_SESSION['texto_alerta']);
 }
+
 ?>
 
 <!--O QUE ESTIVER ABAIXO NÃO FAÇA, APENAS APAGUE!
@@ -71,10 +76,10 @@ INTEGRAR COM A GOME ATUALIZADA!-->
                     echo '<strong>' . $countQuant . '</strong><br>';
                     echo '<strong>' . $countNoventa . '</strong><br>';
                     echo '<strong>' . $countTrinta . '</strong><br>';
-                    foreach($produtosMaisUsado as $produto){
+                    /*foreach($produtosMaisUsado as $produto){
                     echo '<strong>' . $produto["nome_produto"] . '</strong><br>';
                     echo '<strong>' . $produto["usos"] . '</strong><br>';
-}
+}*/
                     echo '</li>';
 
                 ?>

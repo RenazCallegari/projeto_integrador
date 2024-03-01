@@ -4,7 +4,7 @@ session_start();
 $host = "127.0.0.1";
 $user = "root";
 $password = "";
-$db = "estetica_v0.1";
+$db = "estetica_v1_0";
 
 $conn = new mysqli($host, $user, $password, $db);
 
@@ -16,7 +16,7 @@ function logout(){
     session_unset();
     session_destroy();
     
-    header("Location: index.php");
+    header("Location: login.php");
     exit();
 }
 ?>
