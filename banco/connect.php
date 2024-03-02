@@ -17,7 +17,8 @@ if ($conn->connect_error) {
 }
 
 //Inicia uma função que conta em quanto tempo um determinado produto vai vencer.
-function vencimentoEm($dias){
+function vencimentoEm($dias, $conn){
+
     //Seleciona todos os produtos que irão vencer entre o dia atual e quantidade de dias inseridas pelo usuário.
     $sql = "SELECT * FROM produto WHERE validade BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL $dias DAY)";
     $resul = $conn->query($sql);
@@ -40,7 +41,7 @@ function logout(){
     session_unset();
     session_destroy();
     
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 ?>

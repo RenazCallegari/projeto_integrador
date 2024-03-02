@@ -22,9 +22,19 @@ date_default_timezone_set('America/Sao_Paulo');
 //Define as regras e símbolos que formatam as informações de tempo e da data e adicionam a linguagem como português/br
 setlocale(LC_TIME, 'pt_BR', 'ptb');
 
+$sql = "SELECT id_estoque FROM estoque WHERE quant_atual = quant_min";
+$resul = $conn->query($sql);
+
+$countQuantEstoqueMin = 0;
+if ($resul->num_rows > 0) {
+    while ($row = $resul->fetch_assoc()) {
+        $countQuantEstoqueMin = $countQuantEstoqueMin + 1;
+    }
+}
+
 //Inicia uma variável que receberá o retorno da função vencimentoEm com seus respectivos parâmetros.
-$countNoventa = vencimentoEm(90);
-$countTrinta = vencimentoEm(30);
+$countNoventa = vencimentoEm(90, $conn);
+$countTrinta = vencimentoEm(30, $conn);
 
 /*
 //Devemos reincluir atualizados as funções abaixo.
@@ -56,26 +66,153 @@ if ($resul5->num_rows > 0) {
 //desvinculará o erro/alerta do usuário.
 if (isset($_SESSION['texto_alerta'])){
     echo '<div class="">' . $_SESSION['texto_alerta'] . '</div>';
+    echo '<button class="btn" id="fechar" onclick="fecharPopup()">Voltar</button>';
     unset($_SESSION['texto_alerta']);
 }
 
 ?>
 
-<!--O QUE ESTIVER ABAIXO NÃO FAÇA, APENAS APAGUE!
-INTEGRAR COM A GOME ATUALIZADA!-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-<ul class="list-group">
-                <?php
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
 
-                    echo '<li class="list-group-item">';
-                    echo '<strong>' . $countQuant . '</strong><br>';
-                    echo '<strong>' . $countNoventa . '</strong><br>';
-                    echo '<strong>' . $countTrinta . '</strong><br>';
-                    /*foreach($produtosMaisUsado as $produto){
-                    echo '<strong>' . $produto["nome_produto"] . '</strong><br>';
-                    echo '<strong>' . $produto["usos"] . '</strong><br>';
-}*/
-                    echo '</li>';
+    
+    <!-- Janela modal de LOGOFF -->
+    <div class="container-modal" id="janela-modal">
+        <div class="janela-modal">
+            <p>Deseja Realmente sair?</p>
+            <div class="container-btn">
+                <button class="btn" id="fechar" onclick="fecharPopup()">Voltar</button>
+                <button class="btn" id="logoff">Sair</button>
+            </div>
+        </div>
+    </div>
 
-                ?>
-            </ul>
+    <!-- Barra de navegação lateral -->
+    <nav class="sidebar">
+       
+        <div class="btn-expandir">
+            <i class='bx bx-menu' id="btn-exp"></i>
+        </div>
+
+        <!-- lista de itens dentro da barra lateral -->
+        <ul>
+            <li class="item-menu">
+                <a href="home.php">
+                    <span class="icon"><i class='bx bx-home-alt' ></i></span>
+                    <span class="txt-link">Inicio</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="cadastro.php" target="_self">
+                    <span class="icon"><i class='bx bx-log-in-circle'></i></span>
+                    <span class="txt-link">Cadastro</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="estoque.php">
+                    <span class="icon"><i class='bx bx-cube-alt'></i></span>
+                    <span class="txt-link">Estoque</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="#">
+                    <span class="icon"><i class='bx bx-calendar'></i></span>
+                    <span class="txt-link">Vencimentos</span>
+                </a>
+            </li>
+        </ul>
+    
+    </nav>
+
+    <!-- Header  -->
+    <header>
+        <div class="container-header">
+            <div class="container-user-box">
+                <i class='bx bx-user-circle' id="btn-usuario" onclick="abrirPopup()"></i>
+            </div>
+        </div>
+        <div class="container-logoff" id="janela-popup">
+            <i class='bx bxs-up-arrow'></i>
+            <div class="container-box-logoff">
+                <a href="#" class="btn-sair" onclick="abrirModal()">Sair</a>
+            </div>
+        </div>
+    </header>
+
+        <div class="container-controle-prod">
+
+            <div class="container-label-dados">
+                <h3>Dados Gerais:</h3>
+            </div>
+
+                <div class="container-inner">
+                    <div class="container-total-min">
+                        <p>Total de produtos com estoque mínimo:</p>
+                            <p id="dados-inicio">
+                            <?php echo $countQuantEstoqueMin ?>
+                            </p>
+                    </div>
+
+                    <div class="container-total-90">
+                        <p>Total de produtos com 90 dias até o vencimento:</p>
+                            <p id="dados-inicio">
+                            <?php echo $countNoventa ?>
+                            </p>
+                        </div>
+
+                    <div class="container-total-30">
+                        <p>Total de produtos com 30 dias até o vencimento:</p>
+                            <p id="dados-inicio">
+                            <?php echo $countTrinta ?>
+                            </p>
+                    </div>
+                </div>
+
+                <div class="container-inner">
+
+    <!-- containeres "uteis" (vi no figma que eles ainda não tem um proposito expedifico) -->
+                    <div class="container-util">
+                        <p id="dados-inicio">
+                        <!-- adicionar aqui a parte do php ;) -->
+                        </p>
+                    </div>
+                    <div class="container-util">
+                        <p id="dados-inicio">
+                        <!-- adicionar aqui a parte do php ;) -->
+                        </p>
+                    </div>
+                    <div class="container-util">
+                        <p id="dados-inicio">
+                        <!-- adicionar aqui a parte do php ;) -->
+                        </p>
+                    </div>
+                </div>
+
+        </div>
+    
+    <footer>
+        <div class="container-footer">
+            <a>Todos os direitos reservados &copy; Can Say | 2024 - &infin;</a>
+        </div>
+    </footer>
+  
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

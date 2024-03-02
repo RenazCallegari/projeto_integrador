@@ -1,6 +1,6 @@
 <?php
 //Inclui o arquivo connect e tudo o que estiver nele.
-include "connect.php";
+include "banco/connect.php";
 
 //Verifica se foi enviado algum formulário com o método POST e se foi atribui variáveis com os os valores de name de cada campo input.
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -58,7 +58,7 @@ if(isset($_SESSION["id_usuario"])){
 
         <div class="container-login">
             <h2 class="login-text">Login</h2>
-            <form action="">
+            <form action="" method="POST">
                 <input type="text" name="usuario" id="usuario" placeholder="Usuário..." class="inputUser" required>
                     <div class="box-user-ico">
                         <i class='bx bx-user' id="user-icon"></i>
@@ -78,10 +78,6 @@ if(isset($_SESSION["id_usuario"])){
 
     <audio id="som" src="som.mp3" preload="auto"></audio>
 
-
-
-
-    
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <script src="js/script.js"></script>
