@@ -85,7 +85,6 @@ body {
     width: 23.6rem;
     background-color: #1a1a1a;
     color: white;
-    font-family: "Poppins", sans-serif;
 }
 
 #logar {
@@ -159,7 +158,7 @@ body {
 
 .bx-show {
     position: absolute;
-    top: 8.2rem;
+    top: 6.7rem;
     left: 23.5rem;
     color: #5a5a5a;
     transition: .2s ease;
@@ -175,7 +174,7 @@ body {
 
 .bx-hide {
     position: absolute;
-    top: 8.2rem;
+    top: 6.7rem;
     left: 23.5rem;
     color: #5a5a5a;
     transition: .2s ease;
@@ -199,6 +198,28 @@ body {
 
 .prod-by {
     filter: opacity(35%);
+}
+
+.container-manter-logado {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 7px;
+    border: solid #5a5a5a 1px;
+    background-color: #1a1a1a;
+}
+
+#ManterLogado {
+    margin-left: 5px;
+}
+
+.manterLogadoLabel {
+    color: #fff;
+    font-size: 22px;
+    margin-left: 1rem;
 }
 
 
@@ -273,7 +294,7 @@ body {
 
     .bx-show {
         position: absolute;
-        top: 8.2rem;
+        top: 6.7rem;
         left: 22.5rem;
         color: #5a5a5a;
         transition: .2s ease;
@@ -289,7 +310,7 @@ body {
     
     .bx-hide {
         position: absolute;
-        top: 8.2rem;
+        top: 6.7rem;
         left: 22.5rem;
         color: #5a5a5a;
         transition: .2s ease;
@@ -364,7 +385,7 @@ body {
 
     .bx-show {
         position: absolute;
-        top: 8.2rem;
+        top: 6.7rem;
         left: 19.7rem;
         color: #5a5a5a;
         transition: .2s ease;
@@ -380,7 +401,7 @@ body {
     
     .bx-hide {
         position: absolute;
-        top: 8.2rem;
+        top: 6.7rem;
         left: 19.7rem;
         color: #5a5a5a;
         transition: .2s ease;
