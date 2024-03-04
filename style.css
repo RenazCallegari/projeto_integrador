@@ -420,6 +420,8 @@ body {
 
 /*============================================ ESTILIZAÇÃO DA PAGINA HOME =========================================*/
 
+/* Estilização da header */
+
 .container-header {
     position: fixed;
     top: 0;
@@ -449,15 +451,15 @@ body {
 }
 
 .container-logoff {
-    width: 99.7vw;
+    width: 100vw;
     height: 100vh;
     position: fixed;
     left: 0;
-    top: 8.6vh;
+    top: 0;
     display: none;
     align-items: flex-start;
     justify-content: flex-end;
-    z-index: 1;
+    z-index: 2;
 }
 
 .container-logoff.abrir {
@@ -474,6 +476,9 @@ body {
     align-items: center;
     justify-content: center ;
     box-shadow: 0 0 5px #3c7eff;
+    position: fixed;
+    top: 9vh;
+    left: 91vw;
 }
 
 .bxs-up-arrow {
@@ -482,6 +487,7 @@ body {
     left: 97.1vw;
     color: #3c7eff;
     font-size: 33px;
+    z-index: 13;
 }
 
 .btn-sair {
@@ -530,7 +536,7 @@ body {
     flex-direction: column;
     border: 3px solid rgb(178, 178, 178);
     box-shadow: 0 0 10px rgb(178, 178, 178);
-    border-radius: 3rem;
+    border-radius: 2rem;
 }
 
 .janela-modal p {
@@ -799,7 +805,7 @@ ul li.item-menu a .icon > i {
 }
 
 table {
-    width: 90%;
+    width: 95%;
     height: 50vh;
     background-color: whitesmoke;
     margin-top: -3rem;
@@ -820,6 +826,24 @@ table, th, td {
     padding-left: 5px;
     text-align: start;
 }
+
+.bxs-edit {
+    background-color: #d3c725;
+    border:solid 2px #fff374;
+    color: #fff374;
+    padding: 3px;
+    font-size: 23px;
+    border-radius: 10px;
+    transition: .2s ease;
+}
+
+.bxs-edit:hover {
+    background-color: #fff374;
+    border:solid 2px #fff374;
+    color: #d3c725;
+    box-shadow: 0 0 10px #fff374;
+}
+
 
 
 
@@ -858,7 +882,7 @@ table, th, td {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
@@ -867,15 +891,24 @@ table, th, td {
     height: 5px;
     background-color: #a9a9a9;
     border-radius: 3px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.459)
 }
+
+.container-input {
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around
+}
+
 
 .container-form-cadastro input {
     padding: 10px 10px;
     background-color: #c0c0c075;
     border:solid 2px #c9c9c9;
     border-radius: 1rem;
-    margin-left: -21rem;
     font-size: 21px;
+    margin-left: 10px;
 }
 
 .container-form-cadastro label {
@@ -889,14 +922,15 @@ table, th, td {
     border-radius: 1rem;
     font-size: 21px;
     transition: .2s ease;
-    margin-left: 0;
 }
 
 #cadastro-enviar:hover {
     background-color: #74ffd5;
+    color: #1fb286;
     cursor: pointer;
     box-shadow: 0 0 10px #74ffd5;
-    color: #fff;
+    text-decoration: underline;
+    font-weight: 500;
 }
 
 #alterar {
@@ -908,12 +942,13 @@ table, th, td {
     transition: .2s ease;
     color: #000;
     text-decoration: none;
-    margin-left: 0vh;
 }
 
 #alterar:hover {
     background-color: #fff374;
+    color: #a99f1e;
     cursor: pointer;
     box-shadow: 0 0 10px #fff374;
-    color: #fff;
+    text-decoration: underline;
+    font-weight: 500;
 }
