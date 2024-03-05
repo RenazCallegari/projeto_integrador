@@ -93,12 +93,34 @@
             </div>
             <div class="pausa"></div>
             <div class="container-input">
-                <label for="base-prod">Base:<input type="text" id="base-prod" name="base-prod"></label>
-                <label for="tipo-prod">Tipo:<input type="text" id="tipo-prod" name="tipo-prod"></label>
+                 <label for="base-prod">Base:<select id="base-prod" name="base-prod">
+                            <option value="liquida">liquida</option>
+                            <option value="cremosa">cremosa</option>
+                            <option value="compacta">compacta</option>
+                            <option value="mousse">mousse</option>
+                            <option value="pó">pó</option>
+                        </select>
+                    </label>
+                    <label for="tipo-prod">Tipo:<select id="tipo-prod" name="tipo-prod">
+                            <option value="esmalte">esmalte</option>
+                            <option value="maquiagem">maquiagem</option>
+                            <option value="shampoo">shampoo</option>
+                            <option value="creme hidratante">creme hidratante</option>
+                            <option value="perfume">perfume</option>
+                            <option value="desodorante">desodorante</option>
+                            <option value="sabonete">sabonete</option>
+                            <option value="loção para barba">loção para barba</option>
+                            <option value="demaquilante">demaquilante</option>
+                        </select>
+                    </label>
             </div>
             <div class="pausa"></div>
             <div class="container-input">
-                <label for="estado-prod">Estado:<input type="text" id="estado-prod" name="estado-prod"></label>
+                <label for="estado-prod">Estado:<select id="estado-prod" name="estado-prod">
+                        <option value="aberto">aberto</option>
+                        <option value="fechado">fechado</option>
+                    </select>
+                </label>
                 <label for="validade-prod">Validade:<input type="date" id="validade-prod" name="validade-prod"></label>
             </div>
             <div class="pausa"></div>

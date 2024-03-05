@@ -223,6 +223,16 @@ body {
 }
 
 
+
+
+
+/* ADICIONAR AQUI ESTILIZAÇÃO E ESTRUTURAÇÃO DA CAIXA DE ERRO DEPOIS!!!!! */
+
+
+
+
+
+
 /* =========================================== RESPONSIVIDADE DA PAGINDA DE LOGIN ======================================== */
 
 @media (max-width: 450px) {
@@ -842,8 +852,92 @@ table, th, td {
     border:solid 2px #fff374;
     color: #d3c725;
     box-shadow: 0 0 10px #fff374;
+    cursor: pointer;
 }
 
+.fechar-modal-edicao {
+    background-color: #e92933;
+    position: relative;
+    top: -34vh;
+    left: 68vw;
+    border: 2px solid #ae1921;
+    color: #ae1921;
+    font-size: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s ease;
+    z-index: 15;
+}
+
+.fechar-modal-edicao:hover {
+    cursor: pointer;
+    background-color: #e92933;
+    box-shadow: 0 0 10px #e92933;
+    border:solid 2px #e92933;
+}
+
+.container-modal-edicao {
+    background-color: #00000045;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 12;
+}
+
+.container-modal-edicao.abrir {
+    display: flex;
+}
+
+.modal-edicao {
+    background-color: whitesmoke;
+    width: 70vw;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    border: 5px solid rgb(203, 203, 203);
+    z-index: 13;
+}
+
+.modal-edicao form {
+    width: 70vw;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    z-index: 14;
+}
+
+.modal-edicao form label {
+    font-size: 23px;
+}
+
+.modal-edicao form input {
+    padding: 10px 10px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+    font-size: 21px;
+    margin-left: 10px;
+} 
+
+.modal-edicao form select {
+    padding: 10px 10px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+    font-size: 21px;
+    margin-left: 10px;
+} 
 
 
 
@@ -903,6 +997,15 @@ table, th, td {
 
 
 .container-form-cadastro input {
+    padding: 10px 10px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+    font-size: 21px;
+    margin-left: 10px;
+}
+
+.container-form-cadastro select {
     padding: 10px 10px;
     background-color: #c0c0c075;
     border:solid 2px #c9c9c9;

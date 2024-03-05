@@ -67,7 +67,7 @@ function MostrarSenha(){
 ;
 }
 
-/*================= JANELA MODAL DE LOGIN ===================*/
+/*================= JANELA MODAL POPUP PARA LOGOFF ===================*/
 
 function abrirPopup() {
     const popup = document.getElementById("janela-popup")
@@ -89,15 +89,28 @@ function fecharPopup() {
 }
 
 
-/*================= JANELA MODAL DE LOGIN ===================*/
+/*================= JANELA MODAL CONFIRMAÇÃO DE LOGOFF ===================*/
 
-function abrirModal() {
+function abrirModal() { 
     const modal = document.getElementById("janela-modal")
     modal.classList.add('abrir')
 
     modal.addEventListener('click', (e) => {
         if(e.target.id == 'fechar' || e.target.id == 'janela-modal'){
             modal.classList.remove('abrir')
+        }
+    })
+}
+
+/*================= JANELA MODAL DE EDIÇÃO DE PRODUTO ===================*/
+
+function abrirModalEdicao() { 
+    const edicao = document.getElementById("modal-edicao")
+    edicao.classList.add('abrir')
+
+    edicao.addEventListener('click', (e) => {
+        if(e.target.id == 'fechar' || e.target.id == 'modal-edicao'){
+            edicao.classList.remove('abrir')
         }
     })
 }

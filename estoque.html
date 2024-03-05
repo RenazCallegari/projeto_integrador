@@ -96,33 +96,85 @@
                     <td>Lorem.</td>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
-                    <td><a href=""><i class='bx bxs-edit' ></i></a></td>
+                    <td><a onclick="abrirModalEdicao()"><i class='bx bxs-edit'></i></a></td>
                 </tr>
                 <tr>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
-                    <td><a href=""><i class='bx bxs-edit' ></i></a></td>
+                    <td><a onclick="abrirModalEdicao()"><i class='bx bxs-edit'></i></a></td>
                 </tr>
                 <tr>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
-                    <td><a href=""><i class='bx bxs-edit' ></i></a></td>
+                    <td><a onclick="abrirModalEdicao()"><i class='bx bxs-edit'></i></a></td>
                 </tr>
                 <tr>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
                     <td>Lorem.</td>
-                    <td><a href=""><i class='bx bxs-edit' ></i></a></td>
+                    <td><a onclick="abrirModalEdicao()"><i class='bx bxs-edit'></i></a></td>
                 </tr>
+                
             </table>
    
 
     </div>
+
+    <div class="container-modal-edicao" id="modal-edicao">
+        <div class="modal-edicao">
+            <a class="fechar-modal-edicao"><i class='bx bx-x' id="fechar"></i></a>
+            <form action="estoque.html" method="get">
+                <div class="container-input">
+                    <label for="nome-prod">Nome:<input type="text" id="nome-prod" name="nome-prod"></label>
+                    <label for="marca-prod">Marca:<input type="text" id="marca-prod" name="marca-prod"></label>
+                </div>
+              
+                <div class="container-input">
+                    <label for="base-prod">Base:<select id="base-prod" name="base-prod">
+                            <option value="liquida">liquida</option>
+                            <option value="cremosa">cremosa</option>
+                            <option value="compacta">compacta</option>
+                            <option value="mousse">mousse</option>
+                            <option value="pó">pó</option>
+                        </select>
+                    </label>
+                    <label for="tipo-prod">Tipo:<select id="tipo-prod" name="tipo-prod">
+                            <option value="esmalte">esmalte</option>
+                            <option value="maquiagem">maquiagem</option>
+                            <option value="shampoo">shampoo</option>
+                            <option value="creme hidratante">creme hidratante</option>
+                            <option value="perfume">perfume</option>
+                            <option value="desodorante">desodorante</option>
+                            <option value="sabonete">sabonete</option>
+                            <option value="loção para barba">loção para barba</option>
+                            <option value="demaquilante">demaquilante</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="container-input">
+                    <label for="estado-prod">Estado:<select id="estado-prod" name="estado-prod">
+                            <option value="aberto">aberto</option>
+                            <option value="fechado">fechado</option>
+                        </select>
+                    </label>
+                    <label for="validade-prod">Validade:<input type="date" id="validade-prod" name="validade-prod"></label>
+                </div>
+        
+                <div class="container-input">
+                    <input type="submit" id="alterar" value="Alterar">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    
 
     <footer>
         <div class="container-footer">
