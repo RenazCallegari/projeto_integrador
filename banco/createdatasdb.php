@@ -29,15 +29,15 @@ if($conn->connect_error){
     echo "Parabens voce acessou o seu $bd <br>";
     //Mostra a mensagem se vc conseguiu conectar
 }
-
+ 
 //cria uma execucao utilizando a funcao select_db (use do php).
 $conn->select_db($bd);
 //use em php e uma funcao cuja finalidade e servir para outro proposito.
 //para que nao crie um conflito foi criado a funcao select_db cuja finalidade e servir como uma traducao do USE de SQL.
-
+ 
 //Cria o nosso usuário admin
 $sql = "INSERT INTO usuario (usuario, password, curso, estado) VALUES ('Admin', PASSWORD('159753'), 'T.I', 'Ativo')";
-
+ 
 //Executa o comando criado recentemente.
 if($conn->query($sql)){
     //-> = insercao ou execute.
@@ -47,7 +47,7 @@ if($conn->query($sql)){
     echo "Não deu certo ಥ_ಥ<br>O Admin ainda não veio! <br>";
     exit();
 }
-
+ 
 //Inicia um contador que irá se aproximar até a quantidade final de tuplas do excel fornecido pela estética
 $row = 0;
 //Uma condicional que contém a atribuição de uma variável cujo valor é a abertura de um arquivo csv no modo leitura.
@@ -67,7 +67,7 @@ if (($estoque = fopen("estoque_produto.csv", "r")) !== FALSE) {
     //reinicia a variável que conta as linhas.
     $row = 0;
 }
-
+ 
 //Repete o mesmo processo acima mudando apenas o arquivo, porém agora, o comando compara os dados do arquivo com os dados do banco da dados e insere apenas as datas na tabela
 //validade já considerando e realizando a relação com a tabela produtos.
 if (($estoque = fopen("estoque_2024.csv", "r")) !== FALSE) {
@@ -92,7 +92,7 @@ if (($estoque = fopen("estoque_2024.csv", "r")) !== FALSE) {
     $row = 0;
     unset($validadeDB);
 }
-
+ 
 //Repete o mesmo processo acima mudando apenas o arquivo.
 if (($estoque = fopen("estoque_2025.csv", "r")) !== FALSE) {
     while (($dados = fgetcsv($estoque, 2000, ";")) !== FALSE) {
@@ -116,7 +116,7 @@ if (($estoque = fopen("estoque_2025.csv", "r")) !== FALSE) {
     $row = 0;
     unset($validadeDB);
 }
-
+ 
 //Repete o mesmo processo acima mudando apenas o arquivo
 if (($estoque = fopen("estoque_2026.csv", "r")) !== FALSE) {
     while (($dados = fgetcsv($estoque, 2000, ";")) !== FALSE) {
@@ -140,7 +140,7 @@ if (($estoque = fopen("estoque_2026.csv", "r")) !== FALSE) {
     $row = 0;
     unset($validadeDB);
 }
-
+ 
 //Repete o mesmo processo acima mudando apenas o arquivo
 if (($estoque = fopen("estoque_2027.csv", "r")) !== FALSE) {
     while (($dados = fgetcsv($estoque, 2000, ";")) !== FALSE) {
@@ -167,29 +167,35 @@ if (($estoque = fopen("estoque_2027.csv", "r")) !== FALSE) {
 //Após criar todos os dados presentes nas tabela produto, insere um valor inicial na tabela estoque já vinculando o produto com um estoque padrão (min = 0, atual = 5 e ideal = 10).
 $sql = "SELECT * FROM produto";
 $resul = $conn->query($sql);
-
+ 
 $estoqueBD = array();
 if ($resul->num_rows > 0) {
     while ($row = $resul->fetch_assoc()) {
         $estoqueBD[] = $row;
     }
-    
+   
     foreach($estoqueBD as $estoque){
         $sql = "INSERT INTO estoque (id_produto_fk, id_usuario_fk, quant_min, quant_atual, quant_ideal) VALUES (".$estoque['id_produto'].",'1','0','5','10')";
         $resul = $conn->query($sql);
     }
 }
-
+ 
+//Criação de uma função cuja ideia seja contar quantos casos temos de produtos diferentes no arquivo responsável pela criação da tabela produtos.
+function contarLinhasArquivo($arquivo){
+    $linhas = 0;
+    $linhas += count( file($arquivo) );
+    return $linhas;
+}
+ 
 $sql = "SELECT * FROM produto";
 $resul = $conn->query($sql);
-$i = 1;
+ 
+$row = 0;
 if ($resul->num_rows > 0) {
-    while ($row = $resul->fetch_assoc()) {
-        while($i < $row){
-        $sql = "UPDATE estoque SET quant_atual = (SELECT count(*) FROM validade, produto WHERE id_produto ='$i' AND id_produto_fk ='$i')";
+    while ($row < contarLinhasArquivo("estoque_produto.csv")) {
+        $row++;
+        $sql = "UPDATE estoque SET quant_atual = (SELECT count(*) FROM validade, produto WHERE id_produto = $row AND id_produto_fk = $row) WHERE id_estoque = $row";
         $resul = $conn->query($sql);
-        $i = $i+ 1;
-        }
     }
 }
 //Após criar todos os dados presentes nas tabelas exclui a si mesmo (arquivo).
