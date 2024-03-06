@@ -101,16 +101,3 @@ function abrirModal() {
         }
     })
 }
-
-/*================= JANELA MODAL DE EDIÇÃO DE PRODUTO ===================*/
-
-function abrirModalEdicao() { 
-    const edicao = document.getElementById("modal-edicao")
-    edicao.classList.add('abrir')
-
-    edicao.addEventListener('click', (e) => {
-        if(e.target.id == 'fechar' || e.target.id == 'modal-edicao'){
-            edicao.classList.remove('abrir')
-        }
-    })
-}

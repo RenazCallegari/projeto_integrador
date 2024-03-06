@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estoque</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -27,12 +27,14 @@
         </div>
     </div>
 
+    <!-- Barra de navegação lateral -->
     <nav class="sidebar">
        
         <div class="btn-expandir">
             <i class='bx bx-menu' id="btn-exp"></i>
         </div>
 
+        <!-- lista de itens dentro da barra lateral -->
         <ul>
             <li class="item-menu">
                 <a href="home.html">
@@ -68,7 +70,7 @@
     
     </nav>
 
-    <!-- HEADER -->
+    <!-- Header -->
     <header>
         <div class="container-header">
             <div class="container-user-box">
@@ -84,62 +86,32 @@
     </header>
 
 
-    <div class="container-estoque">
-        <div class="estoque-label">
-            <p>Estoque:</p>
+    <div class="container-cadastro-usuario">
+        
+        <div class="label-cadastro-usuario">
+            <p>Cadastro de Usuario:</p>
         </div>
 
-            <table>
-                <tr>
-                    <th>Código</th>
-                    <th style="width: 70%;">Produto</th>
-                    <th>Quantidade</th>
-                    <th>Comprar</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td><a href="editar-produto.html"><i class='bx bxs-edit'></i></a></td>
-                </tr>
-                <tr>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td><a href="editar-produto.html"><i class='bx bxs-edit'></i></a></td>
-                </tr>
-                <tr>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td><a href="editar-produto.html"><i class='bx bxs-edit'></i></a></td>
-                </tr>
-                <tr>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td>Lorem.</td>
-                    <td><a href="editar-produto.html"><i class='bx bxs-edit'></i></a></td>
-                </tr>
-               
-                
-            </table>
-   
+        <div class="container-forms-cadastro-usuario">
+            <form action="cadastro-de-usuario.html" method="get">
+                <input type="text"> 
+                <input type="text"> 
+                <input type="text"> 
+            </form>
+        </div>
 
     </div>
 
 
-    
+
 
     <footer>
         <div class="container-footer">
             <a>Todos os direitos reservados &copy; Can Say | 2024 - &infin;</a>
         </div>
     </footer>
+
+
 
 
 

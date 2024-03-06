@@ -599,7 +599,7 @@ nav.sidebar {
 }
 
 nav.sidebar.expandir {
-    width: 300px;
+    width: 350px;
 }
 
 .btn-expandir {
@@ -645,13 +645,14 @@ ul li.item-menu a {
     font-size: 20px;
     padding: 20px 4%;
     display: flex;
-    margin-top: 24px;
-    line-height: 40px;
+    margin-top: 37px;
+    line-height: 0;
 }
 
 ul li.item-menu a .txt-link {
     margin-left: 70px;
     transition: .2s ease;
+    margin-top: 17px;
 }
 
 nav.sidebar.expandir .txt-link {
@@ -1054,4 +1055,50 @@ table, th, td {
     box-shadow: 0 0 10px #fff374;
     text-decoration: underline;
     font-weight: 500;
+}
+
+/* ESTILIZAÇÃO DA PAGINA DE CADASTRO DE USUARIOS */
+
+.container-cadastro-usuario {
+    position: absolute;
+    top: 7rem;
+    left: 6rem;
+    width: 93vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.label-cadastro-usuario {
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 1rem;
+}
+
+.label-cadastro-usuario p {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.container-forms-cadastro-usuario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: yellowgreen;
+    width: 80vw;
+    height: 70vh;
+}
+
+.container-forms-cadastro-usuario form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
 }
