@@ -63,16 +63,14 @@ if($conn->query($sql)){
 } else {
     echo "Não deu certo ಥ_ಥ você não criou a tabela usuario! <br>";
 }
- 
+
 //Faz o mesmo processo dos dois conjuntos acima apenas mudando os valores.
 $sql = "CREATE TABLE IF NOT EXISTS produto(
     id_produto INT AUTO_INCREMENT PRIMARY KEY,
     nome_produto VARCHAR(255) NOT NULL,
     marca VARCHAR(255),
     base VARCHAR(255),
-    tipo VARCHAR(255),
-    estado VARCHAR(255) NOT NULL,
-    validade DATE NOT NULL
+    tipo VARCHAR(255)
 )";
  
 if($conn->query($sql)){
@@ -80,29 +78,48 @@ if($conn->query($sql)){
 } else {
     echo "Não deu certo ಥ_ಥ você não criou a tabela produto! <br>";
 }
- 
-$sql = "CREATE TABLE IF NOT EXISTS estoque(
-    id_estoque INT AUTO_INCREMENT PRIMARY KEY,
-    id_produto INT NOT NULL,
-    id_usuario INT NOT NULL,
-    quant_min INT NOT NULL,
-    quant_atual INT NOT NULL,
-    quant_ideal INT,
-    FOREIGN KEY (id_produto) REFERENCES produto(id_produto),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+
+//Faz o mesmo processo dos dois conjuntos acima apenas mudando os valores.
+$sql = "CREATE TABLE IF NOT EXISTS validade(
+    id_validade INT AUTO_INCREMENT PRIMARY KEY,
+    id_produto_fk INT NOT NULL,
+    validade DATE NOT NULL,
+    estado VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_produto_fk) REFERENCES produto(id_produto)
+)";
+
+if($conn->query($sql)){
+    echo "Deu certo ᕙ(`▿´)ᕗ você criou a tabela validade! <br>";
+} else {
+    echo "Não deu certo ಥ_ಥ você não criou a tabela validade! <br>";
+}
+
+//Faz o mesmo processo dos dois conjuntos acima apenas mudando os valores.
+$sql = "CREATE TABLE IF NOT EXISTS email(
+    id_email INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario_fk INT NOT NULL,
+    email varchar(255) NOT NULL,
+    token varchar(255) NOT NULL,
+    validade date NOT NULL,
+    FOREIGN KEY (id_usuario_fk) REFERENCES usuario(id_usuario)
 )";
  
 if($conn->query($sql)){
-    echo "Deu certo ᕙ(`▿´)ᕗ você criou a tabela estoque! <br>";
+    echo "Deu certo ᕙ(`▿´)ᕗ você criou a tabela email! <br>";
 } else {
-    echo "Não deu certo ಥ_ಥ você não criou a tabela estoque! <br>";
+    echo "Não deu certo ಥ_ಥ você não criou a tabela email! <br>";
 }
-
-$sql = "CREATE TABLE IF NOT EXISTS email(
-    id_email INT AUTO_INCREMENT PRIMARY KEY,
-    email varchar(255) NOT NULL,
-    token varchar(255) NOT NULL,
-    validade date NOT NULL
+ 
+//Faz o mesmo processo dos dois conjuntos acima apenas mudando os valores.
+$sql = "CREATE TABLE IF NOT EXISTS estoque(
+    id_estoque INT AUTO_INCREMENT PRIMARY KEY,
+    id_produto_fk INT NOT NULL,
+    id_usuario_fk INT NOT NULL,
+    quant_min INT NOT NULL,
+    quant_atual INT NOT NULL,
+    quant_ideal INT NOT NULL,
+    FOREIGN KEY (id_produto_fk) REFERENCES produto(id_produto),
+    FOREIGN KEY (id_usuario_fk) REFERENCES usuario(id_usuario)
 )";
  
 if($conn->query($sql)){

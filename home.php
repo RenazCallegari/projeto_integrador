@@ -22,6 +22,7 @@ date_default_timezone_set('America/Sao_Paulo');
 //Define as regras e símbolos que formatam as informações de tempo e da data e adicionam a linguagem como português/br
 setlocale(LC_TIME, 'pt_BR', 'ptb');
 
+
 $sql = "SELECT id_estoque FROM estoque WHERE quant_atual = quant_min";
 $resul = $conn->query($sql);
 
@@ -31,7 +32,6 @@ if ($resul->num_rows > 0) {
         $countQuantEstoqueMin = $countQuantEstoqueMin + 1;
     }
 }
-
 //Inicia uma variável que receberá o retorno da função vencimentoEm com seus respectivos parâmetros.
 $countNoventa = vencimentoEm(90, $conn);
 $countTrinta = vencimentoEm(30, $conn);

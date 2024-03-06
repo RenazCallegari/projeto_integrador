@@ -4,7 +4,7 @@ include "banco/connect.php";
 
 //Seleciona o nome, validade e estado de todos os produtos da tabela estoque onde o id do usuario for igual o id
 //armazenado pela sesão.
-$sql = "SELECT * FROM produto";
+$sql = "SELECT * FROM produto, estoque WHERE id_produto= id_produto_fk;";
 //Executa o comando acima
 $resul = $conn->query($sql);
 
@@ -13,16 +13,6 @@ $produtosBD = array();
 if ($resul->num_rows > 0) {
     while ($row = $resul->fetch_assoc()) {
         $produtosBD[] = $row;
-    }
-}
-
-$sql = "SELECT quant_atual, quant_min FROM estoque";
-$resul = $conn->query($sql);
-
-$estoqueBD = array();
-if ($resul->num_rows > 0) {
-    while ($row = $resul->fetch_assoc()) {
-        $estoqueBD[] = $row;
     }
 }
 ?>
@@ -62,19 +52,19 @@ if ($resul->num_rows > 0) {
 
         <ul>
             <li class="item-menu">
-                <a href="home.html">
+                <a href="home.php">
                     <span class="icon"><i class='bx bx-home-alt' ></i></span>
                     <span class="txt-link">Inicio</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="cadastro.html">
+                <a href="cadastro.php">
                     <span class="icon"><i class='bx bx-log-in-circle'></i></span>
                     <span class="txt-link">Cadastro</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="estoque.html">
+                <a href="estoque.php">
                     <span class="icon"><i class='bx bx-cube-alt'></i></span>
                     <span class="txt-link">Estoque</span>
                 </a>
@@ -113,22 +103,28 @@ if ($resul->num_rows > 0) {
             <table>
                 <tr>
                     <th>Código</th>
-                    <th style="width: 70%;">Produto</th>
-                    <th>Quantidade</th>
+                    <th style="width: 60%;">Produto</th>
+                    <th>Quantidade Atual</th>
                     <th>Comprar</th>
+                    <th>Estado</th>
                 </tr>
                 <?php 
-                foreach($estoqueBD as $estoque){
-                    foreach($produtosBD as $produto){
-                        echo "<tr>";
-                        echo "<td>" . $produto['id_produto'] . "</td>";
-                        echo "<td>" . $produto['nome_produto'] . "</td>";
-                    
-                    echo "<td>" . $estoque['quant_atual'] . "</td>";
-                    echo "<td>" . $estoque['quant_min'] . "</td>";
+                
+                foreach($produtosBD as $produto){
+                    echo "<tr>";
+                    echo "<td>" . $produto['id_produto'] . "</td>";
+                    echo "<td>" . $produto['nome_produto'] . "</td>";
+                    echo "<td>" . $produto['quant_atual'] . "</td>";
+                    echo "<td>" . $produto['quant_ideal'] - $produto['quant_atual'] . "</td>";
+                    if ($produto['quant_min'] + 3 >= $produto['quant_atual']){
+                        echo "<td>Estoque Crítico!</td>";
+                    } else {
+                        echo "<td>Tudo Certo!</td>";
+                    }
                     echo "</tr>";
-                }}
+                }
                 ?>
+                
             </table>
    
 
