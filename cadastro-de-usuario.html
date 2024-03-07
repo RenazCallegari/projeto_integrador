@@ -93,10 +93,25 @@
         </div>
 
         <div class="container-forms-cadastro-usuario">
-            <form action="cadastro-de-usuario.html" method="get">
-                <input type="text"> 
-                <input type="text"> 
-                <input type="text"> 
+            <form action="">
+            <h2 class="login-text-2">Convidar:</h2>
+               <input type="text" name="" id="" placeholder="Email..." class="inputUser">
+                    <div class="box-user-ico-2">
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                <input type="submit" id="email-convidado">
+            </form>
+            <div class="container-divisao"></div>
+            <form action="">
+            <h2 class="login-text-2">Alterar estado de usuario:</h2>
+               <input type="text" name="" id="" placeholder="Usuario..." class="inputUser" required>
+                    <div class="box-user-ico-2">
+                        <i class='bx bx-user' id="user-icon"></i>
+                    </div>
+                <select id="estado-usuario" name="estado-usuario">
+                    <option value="ativo">ativo</option>
+                    <option value="desligado">desligado</option>
+                <input type="submit" value="alterar" id="alterar-usuario">
             </form>
         </div>
 
