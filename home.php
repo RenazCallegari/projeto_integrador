@@ -71,6 +71,7 @@ if (isset($_SESSION['texto_alerta'])){
     unset($_SESSION['texto_alerta']);
 }
 
+VerificaUser($conn);
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +90,6 @@ if (isset($_SESSION['texto_alerta'])){
     </style>
 </head>
 <body>
-
     
     <!-- Janela modal de LOGOFF -->
     <div class="container-modal" id="janela-modal">
@@ -135,6 +135,12 @@ if (isset($_SESSION['texto_alerta'])){
                     <span class="txt-link">Vencimentos</span>
                 </a>
             </li>
+            <li class="item-menu">
+                <a href="cadastro-de-usuario.php">
+                    <span class="icon"><i class='bx bx-user-plus bx-flip-horizontal' ></i></span>
+                    <span class="txt-link">Cadastro de Usuario</span>
+                </a>
+            </li>
         </ul>
     
     </nav>
@@ -162,7 +168,7 @@ if (isset($_SESSION['texto_alerta'])){
 
                 <div class="container-inner">
                     <div class="container-total-min">
-                        <p>Total de produtos com estoque mínimo:</p>
+                        <p>Total de produtos com estoque crítico:</p>
                             <p id="dados-inicio">
                             <?php
                             foreach($quantEstoqueCrit as $quantCrit){

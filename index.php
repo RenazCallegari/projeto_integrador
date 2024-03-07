@@ -7,6 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //Um if ternário que verifica se foi enviado algum valor do campo input e se não foi atribui o valor vazio a variável.
     $userDigitado = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
     $passwordDigitado = isset($_POST["senha"]) ? $_POST["senha"] : "";
+    isset($_POST["ManterLogado"]) ? $_SESSION["manterLogin"] = $_POST["ManterLogado"] :"";
 
     //Verifica se o usuario digitado é diferente de vazio e se for executa os comandos dentro do if.
     if($userDigitado != "" && $passwordDigitado != ""){
@@ -30,12 +31,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "<div class='alert alert-danger' role='alert'>Usuário ou senha incorretos.</div>";
         }
     }
-}/*
+}
 //Mantêm o login ativo.
-if(isset($_SESSION["id_usuario"])){
+if(isset($_SESSION["manterLogin"])){
     header("Location: home.php");
     exit();
-}*/
+}
+
+if (isset($_SESSION['texto_alerta'])){
+    echo '<div class="">' . $_SESSION['texto_alerta'] . '</div>';
+    unset($_SESSION['texto_alerta']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,17 +54,16 @@ if(isset($_SESSION["id_usuario"])){
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-
    
     <div class="container-inicio">
         <div class="container-simbolo">
-            <img src="imagens/simbolo.png" alt="Logo da estética" class="estetica-logo">
+            <img src="imagens/simbolo.png" alt="Logo de estética com flores" class="estetica-logo">
             <h1 class="estetica-texto">ESTÉTICA</h1>
         </div>
 
         <div class="container-login">
             <h2 class="login-text">Login</h2>
-            <form action="" method="POST">
+            <form action="index.php" method="post">
                 <input type="text" name="usuario" id="usuario" placeholder="Usuário..." class="inputUser" required>
                     <div class="box-user-ico">
                         <i class='bx bx-user' id="user-icon"></i>
@@ -68,6 +73,10 @@ if(isset($_SESSION["id_usuario"])){
                     <div class="box-lock-ico">
                         <i class='bx bx-lock-alt'></i>
                     </div>
+                <div class="container-manter-logado">
+                    <input type="checkbox" name="ManterLogado" id="ManterLogado" style="width: 2rem; height: 1.5rem;">
+                    <label for="ManterLogado" class="manterLogadoLabel">Manter-se logado?</label>
+                </div>
                 <input type="submit" value="Entrar" id="logar">
             </form>
             <div class="div-line"></div>

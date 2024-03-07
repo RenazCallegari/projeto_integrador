@@ -1,9 +1,26 @@
 <?php
-//Inclui o arquivo e tudo que tiver no arquivo connect.php
-include "banco/connect.php";
+include "banco/Connect.php";
 
-$produtosBD = estoqueCritico($conn);
-VerificaUser($conn);
+if (isset($_SESSION["id_usuario"]) AND $_SESSION["id_usuario"] =! 1){
+    $msg = "Sentimos muito, mas infelizmente você não possui autorização de acesso para acessar a página usuários.";
+    $_SESSION["texto_alerta"] = $msg;
+    header("Location: home.php");
+    exit();
+}
+
+if($_SERVER["REQUEST_METHOD"] == "GET"){
+    $enviarEmail = isset($_POST["email"]) ? $_POST["email"] : "";
+    if($enviarEmail != '' AND filter_var($enviarEmail, FILTER_VALIDATE_EMAIL)){
+        mail($enviarEmail,"Convite de cadastro no sistema",random_int());
+    } else {
+        echo "olá mundo";
+    }
+}
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $alterarUser = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
+    $alterarSenha = isset($_POST["senha"]) ? $_POST["senha"] : "";
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +28,7 @@ VerificaUser($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estoque</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -22,7 +39,7 @@ VerificaUser($conn);
     </style>
 </head>
 <body>
-
+    
     <div class="container-modal" id="janela-modal">
         <div class="janela-modal">
             <p>Deseja Realmente sair?</p>
@@ -33,12 +50,14 @@ VerificaUser($conn);
         </div>
     </div>
 
+    <!-- Barra de navegação lateral -->
     <nav class="sidebar">
        
         <div class="btn-expandir">
             <i class='bx bx-menu' id="btn-exp"></i>
         </div>
 
+        <!-- lista de itens dentro da barra lateral -->
         <ul>
             <li class="item-menu">
                 <a href="home.php">
@@ -74,7 +93,7 @@ VerificaUser($conn);
     
     </nav>
 
-    <!-- HEADER -->
+    <!-- Header -->
     <header>
         <div class="container-header">
             <div class="container-user-box">
@@ -89,39 +108,34 @@ VerificaUser($conn);
         </div>
     </header>
 
-    <div class="container-estoque">
-        <div class="estoque-label">
-            <p>Estoque:</p>
+    <div class="container-cadastro-usuario">
+        
+        <div class="label-cadastro-usuario">
+            <p>Cadastro de Usuario:</p>
         </div>
 
-        <table>
-                <tr>
-                    <th>Código</th>
-                    <th style="width: 60%;">Produto</th>
-                    <th>Quantidade Atual</th>
-                    <th>Comprar</th>
-                    <th>Estado</th>
-                    <th>Alterar dados</th>
-                </tr>
-                <?php 
-                
-                foreach($produtosBD as $produto){
-                    echo "<tr>";
-                    echo "<td>" . $produto['id_produto'] . "</td>";
-                    echo "<td>" . $produto['nome_produto'] . "</td>";
-                    echo "<td>" . $produto['quant_atual'] . "</td>";
-                    echo "<td>" . $produto['quant_ideal'] - $produto['quant_atual'] . "</td>";
-                    if ($produto['quant_min'] + 3 >= $produto['quant_atual']){
-                        echo "<td>Estoque Crítico!</td>";
-                    } else {
-                        echo "<td>Tudo Certo!</td>";
-                    }
-                    echo "<td><a href='editar-produto.php'><i class='bx bxs-edit'></i></a></td>";
-                    echo "</tr>";
-                }
-                ?>
-                
-            </table>
+        <div class="container-forms-cadastro-usuario">
+            <form action="">
+            <h2 class="login-text-2">Convidar:</h2>
+               <input type="text" name="" id="" placeholder="Email..." class="inputUser">
+                    <div class="box-user-ico-2">
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                <input type="submit" id="email-convidado">
+            </form>
+            <div class="container-divisao"></div>
+            <form action="">
+            <h2 class="login-text-2">Alterar estado de usuario:</h2>
+               <input type="text" name="" id="" placeholder="Usuario..." class="inputUser" required>
+                    <div class="box-user-ico-2">
+                        <i class='bx bx-user' id="user-icon"></i>
+                    </div>
+                <select id="estado-usuario" name="estado-usuario">
+                    <option value="ativo">ativo</option>
+                    <option value="desligado">desligado</option>
+                <input type="submit" value="alterar" id="alterar-usuario">
+            </form>
+        </div>
 
     </div>
 
@@ -130,7 +144,7 @@ VerificaUser($conn);
             <a>Todos os direitos reservados &copy; Can Say | 2024 - &infin;</a>
         </div>
     </footer>
-
+ 
 <script src="https://unpkg.com/scrollreveal"></script>
 
 <script src="js/script.js"></script>

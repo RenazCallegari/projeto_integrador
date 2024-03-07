@@ -52,6 +52,15 @@ function estoqueCritico($conn){
     return $produtosBD;
 }
 
+function VerificaUser($conn){
+    if (!isset($_SESSION["id_usuario"])){
+        $msg = "Antes de usar nosso serviço por gentileza se conecte normalmente.";
+        $_SESSION["texto_alerta"] = $msg;
+        header("Location: index.php");
+        exit();
+    }
+}
+
 //Inicializa uma função que não precisa de parâmetros e primeiro desvincula todos os dados dos cookies(da sessão)
 //depois destroi os cookies (apaga a sessão) e redireciona o usuário a página login. 
 function logout(){

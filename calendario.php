@@ -19,4 +19,6 @@ foreach($produtosBD as $produto){
         echo "ferrou";
     }
 }
+
+VerificaUser($conn);
 ?>

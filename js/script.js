@@ -16,35 +16,6 @@ ScrollReveal().reveal('.div-line', { origin: 'bottom' });
 ScrollReveal().reveal('.prod-by', { origin: 'left' });
 
 
-
-
-// Verifica se o som já foi reproduzido
-var somReproduzido = false;
-
-// Função para reproduzir o som
-function reproduzirSom() {
-    // Verifica se o som já foi reproduzido
-    if (!somReproduzido) {
-        // Obtém o elemento de áudio
-        var audio = document.getElementById('som');
-
-        // Define o volume desejado (0.0 a 1.0)
-        audio.volume = 0.3; // Exemplo: ajuste para 50% de volume
-
-
-        // Reproduz o som
-        audio.play();
-
-        // Atualiza a flag indicando que o som foi reproduzido
-        somReproduzido = true;
-    }
-}
-
-// Adiciona um ouvinte de eventos para carregamento ou recarregamento da página
-window.addEventListener('load', reproduzirSom);
-
-
-
   
 
 //=============================================codigos para estilização da pagina home===================================================
@@ -96,7 +67,7 @@ function MostrarSenha(){
 ;
 }
 
-/*================= JANELA MODAL DE LOGIN ===================*/
+/*================= JANELA MODAL POPUP PARA LOGOFF ===================*/
 
 function abrirPopup() {
     const popup = document.getElementById("janela-popup")
@@ -118,9 +89,9 @@ function fecharPopup() {
 }
 
 
-/*================= JANELA MODAL DE LOGIN ===================*/
+/*================= JANELA MODAL CONFIRMAÇÃO DE LOGOFF ===================*/
 
-function abrirModal() {
+function abrirModal() { 
     const modal = document.getElementById("janela-modal")
     modal.classList.add('abrir')
 

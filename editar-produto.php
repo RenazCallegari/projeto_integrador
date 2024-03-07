@@ -1,25 +1,5 @@
 <?php
-//Inclui o arquivo e tudo que tiver no arquivo connect.php
-include "banco/connect.php";
 
-//Verifica se o houve algum formulário enviado via POST e se tiver sido verifica os campos inseridos
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $nomeProduto = isset($_POST["nome"]) ? $_POST["nome"] : "";
-    $validadeProduto = isset($_POST["validade"]) ? $_POST["validade"] : "";
-    $estadoProduto = isset($_POST["estado"]) ? $_POST["estado"] : "";
-    $idProfessor = isset($_POST["id"]) ? $_POST["id"] : "";
-
-    //Caso todos os campos estejam certos insere os dados na banco de dados e emite uma mensagem.
-    if ($nomeProduto != "" and $validadeProduto != "" and $estadoProduto != "" and $idProfessor != "") {
-        $sql = "INSERT INTO estoque (nome_produto, validade, estado, id_usuario) VALUES ('$nomeProduto', '$validadeProduto', '$estadoProduto', '$idProfessor')";
-        $result = $conn->query($sql);
-        echo "<div class='btn btn-outline-success' role='success'>Dados inseridos com sucesso.</div>";
-    } else {
-        echo "<div class='alert alert-danger' role='alert'>Houve um erro ao inserir os dados.</div>";
-    }
-}
-
-VerificaUser($conn);
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +18,8 @@ VerificaUser($conn);
     </style>
 </head>
 <body>
+
+
     
     <div class="container-modal" id="janela-modal">
         <div class="janela-modal">
@@ -83,7 +65,7 @@ VerificaUser($conn);
                 </a>
             </li>
             <li class="item-menu">
-                <a href="cadastro-de-usuario.php">
+                <a href="cadastr-de-usuario.php">
                     <span class="icon"><i class='bx bx-user-plus bx-flip-horizontal' ></i></span>
                     <span class="txt-link">Cadastro de Usuario</span>
                 </a>
@@ -111,10 +93,10 @@ VerificaUser($conn);
     <div class="container-form-cadastro">
         
         <div class="label-cadastro">
-            <p>Cadastro:</p>
+            <p>Alterar informações do produto:</p>
         </div>
 
-        <form action="cadastro.html" method="get">
+        <form action="editar-produto.html" method="get">
             <div class="container-input">
                 <label for="nome-prod">Nome:<input type="text" id="nome-prod" name="nome-prod"></label>
                 <label for="marca-prod">Marca:<input type="text" id="marca-prod" name="marca-prod"></label>
@@ -153,7 +135,7 @@ VerificaUser($conn);
             </div>
             <div class="pausa"></div>
             <div class="container-input">
-                <input type="submit" id="cadastro-enviar">
+                <input type="submit" id="alterar" value="Alterar">
             </div>
         </form>
 

@@ -85,7 +85,6 @@ body {
     width: 23.6rem;
     background-color: #1a1a1a;
     color: white;
-    font-family: "Poppins", sans-serif;
 }
 
 #logar {
@@ -159,7 +158,7 @@ body {
 
 .bx-show {
     position: absolute;
-    top: 8.2rem;
+    top: 6.7rem;
     left: 23.5rem;
     color: #5a5a5a;
     transition: .2s ease;
@@ -175,7 +174,7 @@ body {
 
 .bx-hide {
     position: absolute;
-    top: 8.2rem;
+    top: 6.7rem;
     left: 23.5rem;
     color: #5a5a5a;
     transition: .2s ease;
@@ -200,6 +199,38 @@ body {
 .prod-by {
     filter: opacity(35%);
 }
+
+.container-manter-logado {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 7px;
+    border: solid #5a5a5a 1px;
+    background-color: #1a1a1a;
+}
+
+#ManterLogado {
+    margin-left: 5px;
+}
+
+.manterLogadoLabel {
+    color: #fff;
+    font-size: 22px;
+    margin-left: 1rem;
+}
+
+
+
+
+
+/* ADICIONAR AQUI ESTILIZAÇÃO E ESTRUTURAÇÃO DA CAIXA DE ERRO DEPOIS!!!!! */
+
+
+
+
 
 
 /* =========================================== RESPONSIVIDADE DA PAGINDA DE LOGIN ======================================== */
@@ -273,7 +304,7 @@ body {
 
     .bx-show {
         position: absolute;
-        top: 8.2rem;
+        top: 6.7rem;
         left: 22.5rem;
         color: #5a5a5a;
         transition: .2s ease;
@@ -289,7 +320,7 @@ body {
     
     .bx-hide {
         position: absolute;
-        top: 8.2rem;
+        top: 6.7rem;
         left: 22.5rem;
         color: #5a5a5a;
         transition: .2s ease;
@@ -364,7 +395,7 @@ body {
 
     .bx-show {
         position: absolute;
-        top: 8.2rem;
+        top: 6.7rem;
         left: 19.7rem;
         color: #5a5a5a;
         transition: .2s ease;
@@ -380,7 +411,7 @@ body {
     
     .bx-hide {
         position: absolute;
-        top: 8.2rem;
+        top: 6.7rem;
         left: 19.7rem;
         color: #5a5a5a;
         transition: .2s ease;
@@ -398,6 +429,8 @@ body {
 
 
 /*============================================ ESTILIZAÇÃO DA PAGINA HOME =========================================*/
+
+/* Estilização da header */
 
 .container-header {
     position: fixed;
@@ -428,15 +461,15 @@ body {
 }
 
 .container-logoff {
-    width: 99.7vw;
+    width: 100vw;
     height: 100vh;
     position: fixed;
     left: 0;
-    top: 8.6vh;
+    top: 0;
     display: none;
     align-items: flex-start;
     justify-content: flex-end;
-    z-index: 1;
+    z-index: 2;
 }
 
 .container-logoff.abrir {
@@ -453,6 +486,9 @@ body {
     align-items: center;
     justify-content: center ;
     box-shadow: 0 0 5px #3c7eff;
+    position: fixed;
+    top: 9vh;
+    left: 91vw;
 }
 
 .bxs-up-arrow {
@@ -461,6 +497,7 @@ body {
     left: 97.1vw;
     color: #3c7eff;
     font-size: 33px;
+    z-index: 13;
 }
 
 .btn-sair {
@@ -509,7 +546,7 @@ body {
     flex-direction: column;
     border: 3px solid rgb(178, 178, 178);
     box-shadow: 0 0 10px rgb(178, 178, 178);
-    border-radius: 3rem;
+    border-radius: 2rem;
 }
 
 .janela-modal p {
@@ -562,7 +599,7 @@ nav.sidebar {
 }
 
 nav.sidebar.expandir {
-    width: 300px;
+    width: 350px;
 }
 
 .btn-expandir {
@@ -608,13 +645,14 @@ ul li.item-menu a {
     font-size: 20px;
     padding: 20px 4%;
     display: flex;
-    margin-top: 24px;
-    line-height: 40px;
+    margin-top: 37px;
+    line-height: 0;
 }
 
 ul li.item-menu a .txt-link {
     margin-left: 70px;
     transition: .2s ease;
+    margin-top: 17px;
 }
 
 nav.sidebar.expandir .txt-link {
@@ -778,7 +816,7 @@ ul li.item-menu a .icon > i {
 }
 
 table {
-    width: 90%;
+    width: 95%;
     height: 50vh;
     background-color: whitesmoke;
     margin-top: -3rem;
@@ -799,6 +837,108 @@ table, th, td {
     padding-left: 5px;
     text-align: start;
 }
+
+.bxs-edit {
+    background-color: #d3c725;
+    border:solid 2px #fff374;
+    color: #fff374;
+    padding: 3px;
+    font-size: 23px;
+    border-radius: 10px;
+    transition: .2s ease;
+}
+
+.bxs-edit:hover {
+    background-color: #fff374;
+    border:solid 2px #fff374;
+    color: #d3c725;
+    box-shadow: 0 0 10px #fff374;
+    cursor: pointer;
+}
+
+.fechar-modal-edicao {
+    background-color: #e92933;
+    position: relative;
+    top: -34vh;
+    left: 68vw;
+    border: 2px solid #ae1921;
+    color: #ae1921;
+    font-size: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s ease;
+    z-index: 15;
+}
+
+.fechar-modal-edicao:hover {
+    cursor: pointer;
+    background-color: #e92933;
+    box-shadow: 0 0 10px #e92933;
+    border:solid 2px #e92933;
+}
+
+.container-modal-edicao {
+    background-color: #00000045;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 12;
+}
+
+.container-modal-edicao.abrir {
+    display: flex;
+}
+
+.modal-edicao {
+    background-color: whitesmoke;
+    width: 70vw;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    border: 5px solid rgb(203, 203, 203);
+    z-index: 13;
+}
+
+.modal-edicao form {
+    width: 70vw;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    z-index: 14;
+}
+
+.modal-edicao form label {
+    font-size: 23px;
+}
+
+.modal-edicao form input {
+    padding: 10px 10px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+    font-size: 21px;
+    margin-left: 10px;
+} 
+
+.modal-edicao form select {
+    padding: 10px 10px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+    font-size: 21px;
+    margin-left: 10px;
+} 
 
 
 
@@ -837,7 +977,7 @@ table, th, td {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
@@ -846,15 +986,33 @@ table, th, td {
     height: 5px;
     background-color: #a9a9a9;
     border-radius: 3px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.459)
 }
+
+.container-input {
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around
+}
+
 
 .container-form-cadastro input {
     padding: 10px 10px;
     background-color: #c0c0c075;
     border:solid 2px #c9c9c9;
     border-radius: 1rem;
-    margin-left: -21rem;
     font-size: 21px;
+    margin-left: 10px;
+}
+
+.container-form-cadastro select {
+    padding: 10px 10px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+    font-size: 21px;
+    margin-left: 10px;
 }
 
 .container-form-cadastro label {
@@ -868,14 +1026,15 @@ table, th, td {
     border-radius: 1rem;
     font-size: 21px;
     transition: .2s ease;
-    margin-left: 0;
 }
 
 #cadastro-enviar:hover {
     background-color: #74ffd5;
+    color: #1fb286;
     cursor: pointer;
     box-shadow: 0 0 10px #74ffd5;
-    color: #fff;
+    text-decoration: underline;
+    font-weight: 500;
 }
 
 #alterar {
@@ -887,12 +1046,136 @@ table, th, td {
     transition: .2s ease;
     color: #000;
     text-decoration: none;
-    margin-left: 0vh;
 }
 
 #alterar:hover {
     background-color: #fff374;
+    color: #a99f1e;
     cursor: pointer;
     box-shadow: 0 0 10px #fff374;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* ESTILIZAÇÃO DA PAGINA DE CADASTRO DE USUARIOS */
+
+.container-cadastro-usuario {
+    position: absolute;
+    top: 7rem;
+    left: 6rem;
+    width: 93vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.label-cadastro-usuario {
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 1rem;
+}
+
+.label-cadastro-usuario p {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.container-forms-cadastro-usuario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: yelowgreen;
+    width: 70vw;
+    height: 70vh;
+}
+
+.container-forms-cadastro-usuario h2 {
+    font-size: 23px;
+}
+
+.container-forms-cadastro-usuario i {
+    color: #8e8e8e;
+    font-size: 1.5rem;
+}
+
+.container-forms-cadastro-usuario form {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 40%;
+    width: 26.3%;
+    margin-bottom: 12rem;
+    background-color: lue; 
+}
+
+.container-forms-cadastro-usuario input {
+    padding: 10px 15px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+    font-size: 21px;
+}
+
+.container-forms-cadastro-usuario select {
+    height: 3.5rem;
+    width: 99%;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+    font-size: 21px;
+    text-align: center;
+}
+
+.box-user-ico-2 {
+    padding: 11px 11px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+}
+
+.box-lock-ico-2 {
+    padding: 11px 11px;
+    background-color: #c0c0c075;
+    border:solid 2px #c9c9c9;
+    border-radius: 1rem;
+}
+
+#email-convidado {
+    width: 99%;
+    transition: .2s ease;
+}
+
+#email-convidado:hover {
+    background-color: #c9c9c9;
+    cursor: pointer;
     color: #fff;
+    box-shadow: 0 0 10px #c9c9c9;
+}
+
+#alterar-usuario {
+    width: 99%;
+    transition: .2s ease;
+}
+
+#alterar-usuario:hover {
+    background-color: #c9c9c9;
+    cursor: pointer;
+    color: #fff;
+    box-shadow: 0 0 10px #c9c9c9;
+}
+
+.container-divisao {
+    background-color: #8e8e8e;
+    height: 90%;
+    width: 5px;
+    border-radius: 2rem;
+    box-shadow: 0 0 20px #00000070;
 }
