@@ -35,7 +35,8 @@ if ($resul->num_rows > 0) {
 //Inicia uma variável que receberá o retorno da função vencimentoEm com seus respectivos parâmetros.
 $countNoventa = vencimentoEm(90, $conn);
 $countTrinta = vencimentoEm(30, $conn);
-
+$quantEstoqueCrit = estoqueCritico($conn);
+$count = 0;
 /*
 //Devemos reincluir atualizados as funções abaixo.
 $sql4 = "SELECT * FROM produto WHERE estado='teste' order by usos DESC LIMIT 1";
@@ -163,7 +164,14 @@ if (isset($_SESSION['texto_alerta'])){
                     <div class="container-total-min">
                         <p>Total de produtos com estoque mínimo:</p>
                             <p id="dados-inicio">
-                            <?php echo $countQuantEstoqueMin ?>
+                            <?php
+                            foreach($quantEstoqueCrit as $quantCrit){
+                                if ($quantCrit['quant_min'] + 3 >= $quantCrit['quant_atual']){
+                                    $count++;
+                                }
+                            }
+                            echo $count;
+                                ?>
                             </p>
                     </div>
 

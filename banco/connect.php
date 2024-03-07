@@ -35,6 +35,23 @@ function vencimentoEm($dias, $conn){
     return $count;
 }
 
+function estoqueCritico($conn){
+    //Seleciona o nome, validade e estado de todos os produtos da tabela estoque onde o id do usuario for igual o id
+    //armazenado pela sesão.
+    $sql = "SELECT * FROM produto, estoque WHERE id_produto= id_produto_fk;";
+    //Executa o comando acima
+    $resul = $conn->query($sql);
+
+    //Cria um array de produtos e para cada resultado do select adiciona os dados dentro do array.
+    $produtosBD = array();
+    if ($resul->num_rows > 0) {
+        while ($row = $resul->fetch_assoc()) {
+            $produtosBD[] = $row;
+        }
+    }
+    return $produtosBD;
+}
+
 //Inicializa uma função que não precisa de parâmetros e primeiro desvincula todos os dados dos cookies(da sessão)
 //depois destroi os cookies (apaga a sessão) e redireciona o usuário a página login. 
 function logout(){
