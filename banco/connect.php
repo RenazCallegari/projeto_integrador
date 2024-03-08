@@ -4,9 +4,9 @@ session_start();
 
 //Configurações para acessar o SGBD
 $host = "127.0.0.1";
-$user = "id21965817_root";
-$password = "@Senac2010";
-$db = "id21965817_db_estetcontrol";
+$user = "root";
+$password = "";
+$db = "estetica_v1_0";
 
 //Tenta realizar a conexão com o SGBD
 $conn = new mysqli($host, $user, $password, $db);
@@ -55,7 +55,7 @@ function estoqueCritico($conn){
 function countUsos($tipo, $conn){
 
 if($tipo == "ASC"){
-    $sql = "SELECT * FROM validade,estoque WHERE estado='Vazio' ORDER BY 'usos' ASC LIMIT 1";
+    $sql = "SELECT * FROM validade,estoque,produto WHERE estado='Vazio' ORDER BY 'usos' ASC LIMIT 1";
     $resul = $conn->query($sql);
 
     $produtosUsado = array();
@@ -65,10 +65,13 @@ if($tipo == "ASC"){
             $produtoUsado[] = $row;
             $countUsado = $countUsado + 1;
         }
+        foreach ($produtoUsado as $produto){
+            $nomeProduto = $produto['nome_produto'];
+        }
     }
 }
 if($tipo == "DESC"){
-    $sql = "SELECT * FROM validade,estoque WHERE estado='Vazio' ORDER BY 'usos' DESC LIMIT 1";
+    $sql = "SELECT * FROM validade,estoque,produto WHERE estado='Vazio' ORDER BY 'usos' DESC LIMIT 1";
     $resul = $conn->query($sql);
 
     $produtosUsado = array();
@@ -78,9 +81,12 @@ if($tipo == "DESC"){
             $produtoUsado[] = $row;
             $countUsado = $countUsado + 1;
         }
+        foreach ($produtoUsado as $produto){
+            $nomeProduto = $produto['nome_produto'];
+        }
     }
 }
-    return $countUsado;
+    return array($countUsado,$nomeProduto);
 }
 
 function VerificaUser($conn){
