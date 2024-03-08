@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro de usuario</title>
     <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -124,7 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" id="email-convidado">
             </form>
             <div class="container-divisao"></div>
-            <form action="cadastro-de-usuario.php" method="post">
+            <form action="cadastro-de-usuario.php" method="">
             <h2 class="login-text-2">Alterar estado de usuario:</h2>
                <input type="text" name="" id="" placeholder="Usuario..." class="inputUser" required>
                     <div class="box-user-ico-2">
