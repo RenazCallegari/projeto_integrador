@@ -52,6 +52,37 @@ function estoqueCritico($conn){
     return $produtosBD;
 }
 
+function countUsos($tipo, $conn){
+
+if($tipo == "ASC"){
+    $sql = "SELECT * FROM validade,estoque WHERE estado='Vazio' ORDER BY 'usos' ASC LIMIT 1";
+    $resul = $conn->query($sql);
+
+    $produtosUsado = array();
+    $countUsado = 0;
+    if ($resul->num_rows > 0) {
+         while ($row = $resul->fetch_assoc()) {
+            $produtoUsado[] = $row;
+            $countUsado = $countUsado + 1;
+        }
+    }
+}
+if($tipo == "DESC"){
+    $sql = "SELECT * FROM validade,estoque WHERE estado='Vazio' ORDER BY 'usos' DESC LIMIT 1";
+    $resul = $conn->query($sql);
+
+    $produtosUsado = array();
+    $countUsado = 0;
+    if ($resul->num_rows > 0) {
+        while ($row = $resul->fetch_assoc()) {
+            $produtoUsado[] = $row;
+            $countUsado = $countUsado + 1;
+        }
+    }
+}
+    return array($countUsado,$produtosUsado);
+}
+
 function VerificaUser($conn){
     if (!isset($_SESSION["id_usuario"])){
         $msg = "Antes de usar nosso serviço por gentileza se conecte normalmente.";

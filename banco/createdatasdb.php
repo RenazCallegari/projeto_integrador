@@ -82,7 +82,7 @@ if (($estoque = fopen("estoque_2024.csv", "r")) !== FALSE) {
                 $validadeDB[] = $row;
                 }
                 foreach($validadeDB as $validade){
-                    $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$dados[4]','lacrado')";
+                    $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$dados[4]','Lacrado')";
                     $resul = $conn->query($sql);
                 }
             }
@@ -106,7 +106,7 @@ if (($estoque = fopen("estoque_2025.csv", "r")) !== FALSE) {
                 $validadeDB[] = $row;
                 }
                 foreach($validadeDB as $validade){
-                    $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$dados[4]','lacrado')";
+                    $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$dados[4]','Lacrado')";
                     $resul = $conn->query($sql);
                 }
             }
@@ -130,7 +130,7 @@ if (($estoque = fopen("estoque_2026.csv", "r")) !== FALSE) {
                 $validadeDB[] = $row;
                 }
                 foreach($validadeDB as $validade){
-                    $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$dados[4]','lacrado')";
+                    $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$dados[4]','Lacrado')";
                     $resul = $conn->query($sql);
                 }
             }
@@ -154,7 +154,7 @@ if (($estoque = fopen("estoque_2027.csv", "r")) !== FALSE) {
                 $validadeDB[] = $row;
                 }
                 foreach($validadeDB as $validade){
-                    $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$dados[4]','lacrado')";
+                    $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$dados[4]','Lacrado')";
                     $resul = $conn->query($sql);
                 }
             }
@@ -175,7 +175,7 @@ if ($resul->num_rows > 0) {
     }
    
     foreach($estoqueBD as $estoque){
-        $sql = "INSERT INTO estoque (id_produto_fk, id_usuario_fk, quant_min, quant_atual, quant_ideal) VALUES (".$estoque['id_produto'].",'1','0','5','10')";
+        $sql = "INSERT INTO estoque (id_produto_fk, id_usuario_fk, quant_min, quant_atual, quant_ideal, usos) VALUES (".$estoque['id_produto'].",'1','0','5','10', '0')";
         $resul = $conn->query($sql);
     }
 }

@@ -37,6 +37,10 @@ $countNoventa = vencimentoEm(90, $conn);
 $countTrinta = vencimentoEm(30, $conn);
 $quantEstoqueCrit = estoqueCritico($conn);
 $count = 0;
+
+$tipo = "ASC";
+$menosUsado = countUsos($tipo,$conn);
+
 /*
 //Devemos reincluir atualizados as funções abaixo.
 $sql4 = "SELECT * FROM produto WHERE estado='teste' order by usos DESC LIMIT 1";
@@ -70,7 +74,7 @@ if (isset($_SESSION['texto_alerta'])){
     echo '<button class="btn" id="fechar" onclick="fecharPopup()">Voltar</button>';
     unset($_SESSION['texto_alerta']);
 }
-
+logout();
 VerificaUser($conn);
 ?>
 
@@ -201,7 +205,7 @@ VerificaUser($conn);
     <!-- containeres "uteis" (vi no figma que eles ainda não tem um proposito expedifico) -->
                     <div class="container-util">
                         <p id="dados-inicio">
-                        <!-- adicionar aqui a parte do php ;) -->
+                        <?php ?>
                         </p>
                     </div>
                     <div class="container-util">

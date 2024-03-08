@@ -118,6 +118,7 @@ $sql = "CREATE TABLE IF NOT EXISTS estoque(
     quant_min INT NOT NULL,
     quant_atual INT NOT NULL,
     quant_ideal INT NOT NULL,
+    usos INT NOT NULL,
     FOREIGN KEY (id_produto_fk) REFERENCES produto(id_produto),
     FOREIGN KEY (id_usuario_fk) REFERENCES usuario(id_usuario)
 )";

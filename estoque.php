@@ -97,7 +97,9 @@ VerificaUser($conn);
         <table>
                 <tr>
                     <th>Código</th>
-                    <th style="width: 60%;">Produto</th>
+                    <th style="width: 20%;">Produto</th>
+                    <th>Marca</th>
+                    <th>Tipo</th>
                     <th>Quantidade Atual</th>
                     <th>Comprar</th>
                     <th>Estado</th>
@@ -109,8 +111,14 @@ VerificaUser($conn);
                     echo "<tr>";
                     echo "<td>" . $produto['id_produto'] . "</td>";
                     echo "<td>" . $produto['nome_produto'] . "</td>";
+                    echo "<td>" . $produto['marca'] . "</td>";
+                    echo "<td>" . $produto['tipo'] . "</td>";
                     echo "<td>" . $produto['quant_atual'] . "</td>";
-                    echo "<td>" . $produto['quant_ideal'] - $produto['quant_atual'] . "</td>";
+                    if($produto['quant_atual'] > $produto['quant_ideal']){
+                        echo "<td>0</td>";
+                    }else {
+                        echo "<td>" . $produto['quant_ideal'] - $produto['quant_atual'] . "</td>";
+                    }
                     if ($produto['quant_min'] + 3 >= $produto['quant_atual']){
                         echo "<td>Estoque Crítico!</td>";
                     } else {
