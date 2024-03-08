@@ -4,9 +4,9 @@ session_start();
 
 //Configurações para acessar o SGBD
 $host = "127.0.0.1";
-$user = "root";
-$password = "";
-$db = "estetica_v1_0";
+$user = "id21965817_root";
+$password = "@Senac2010";
+$db = "id21965817_db_estetcontrol";
 
 //Tenta realizar a conexão com o SGBD
 $conn = new mysqli($host, $user, $password, $db);
@@ -80,7 +80,7 @@ if($tipo == "DESC"){
         }
     }
 }
-    return array($countUsado,$produtosUsado);
+    return $countUsado;
 }
 
 function VerificaUser($conn){
