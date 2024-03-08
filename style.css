@@ -869,7 +869,7 @@ table {
     width: 95%;
     height: 50vh;
     background-color: whitesmoke;
-    margin-top: -3rem;
+    margin-top: -4.5rem;
     border-radius: 10px;
     position: absolute;
     top: 10rem;
@@ -1044,7 +1044,7 @@ table, th, td {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: yellowgreen;
+    flex-direction: row;
 }
 
 
