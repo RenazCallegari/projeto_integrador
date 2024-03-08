@@ -16,31 +16,38 @@
             <h1 class="estetica-texto">ESTÉTICA</h1>
         </div>
 
-        <div class="container-login">
-            <h2 class="login-text">Login</h2>
-            <form action="">
-                <input type="text" name="usuario" id="usuario" placeholder="Usuário..." class="inputUser" required>
-                    <div class="box-user-ico">
-                        <i class='bx bx-user' id="user-icon"></i>
+        <div class="container-login-area">
+
+            <div class="erro-box">
+                Usuario ou senha invalidas !
+            </div>
+
+            <div class="container-login">   
+                <h2 class="login-text">Login</h2>
+                <form action="">
+                    <input type="text" name="usuario" id="usuario" placeholder="Usuário..." class="inputUser" required>
+                        <div class="box-user-ico">
+                            <i class='bx bx-user' id="user-icon"></i>
+                        </div>
+                    <label for="senha"> <i class='bx bx-show'id="MostrarSenha" onclick="MostrarSenha()"></i></label>
+                    <input type="password" name="senha" id="senha" placeholder="Senha..." required>
+                        <div class="box-lock-ico">
+                            <i class='bx bx-lock-alt'></i>
+                        </div>
+                    <div class="container-manter-logado">
+                        <input type="checkbox" name="ManterLogado" id="ManterLogado" style="width: 2rem; height: 1.5rem;">
+                        <label for="ManterLogado" class="manterLogadoLabel">Manter-se logado?</label>
                     </div>
-                <label for="senha"> <i class='bx bx-show'id="MostrarSenha" onclick="MostrarSenha()"></i></label>
-                <input type="password" name="senha" id="senha" placeholder="Senha..." required>
-                    <div class="box-lock-ico">
-                        <i class='bx bx-lock-alt'></i>
-                    </div>
-                <div class="container-manter-logado">
-                    <input type="checkbox" name="ManterLogado" id="ManterLogado" style="width: 2rem; height: 1.5rem;">
-                    <label for="ManterLogado" class="manterLogadoLabel">Manter-se logado?</label>
-                </div>
-                <input type="submit" value="Entrar" id="logar">
-            </form>
-            <div class="div-line"></div>
-            <h4 class="prod-by">Uma produção Can Say</h4>
+                    <input type="submit" value="Entrar" id="logar">
+                </form>
+                <div class="div-line"></div>
+                <h4 class="prod-by">Uma produção Can Say</h4>
+
+            </div>
         </div>
-        
+    
     </div>
 
-    <audio id="som" src="som.mp3" preload="auto"></audio>
 
 
 

@@ -14,6 +14,7 @@ ScrollReveal().reveal('.container-login', { origin: 'right' });
 ScrollReveal().reveal('.login-text', { origin: 'top' });
 ScrollReveal().reveal('.div-line', { origin: 'bottom' });
 ScrollReveal().reveal('.prod-by', { origin: 'left' });
+ScrollReveal().reveal('.container-login-area', { origin: 'right' });
 
 
   
@@ -98,6 +99,18 @@ function abrirModal() {
     modal.addEventListener('click', (e) => {
         if(e.target.id == 'fechar' || e.target.id == 'janela-modal'){
             modal.classList.remove('abrir')
+        }
+    })
+}
+
+/*================= FECHAR JANELA DE ERRO DA HOME ===================*/
+
+function fecharErro() { 
+    const erro = document.getElementById("erro-box-home")
+
+    erro.addEventListener('click', (e) => {
+        if(e.target.id == 'fechar' || e.target.id == 'janela-modal'){
+            erro.classList.add('fechar')
         }
     })
 }
