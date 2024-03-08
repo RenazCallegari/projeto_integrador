@@ -44,32 +44,6 @@ $menosUsado = countUsos($tipo,$conn);
 $tipo = "DESC";
 $maisUsado = countUsos($tipo,$conn);
 
-/*
-//Devemos reincluir atualizados as funções abaixo.
-$sql4 = "SELECT * FROM produto WHERE estado='teste' order by usos DESC LIMIT 1";
-$resul4 = $conn->query($sql4);
-
-$produtosMaisUsado = array();
-$countMaisUsado = 0;
-if ($resul4->num_rows > 0) {
-    while ($row = $resul4->fetch_assoc()) {
-        $produtosMaisUsado[] = $row;
-        $countMaisUsado = $countMaisUsado + 1;
-    }
-}
-
-$sql5 = "SELECT * FROM produto WHERE estado='teste' order by usos Asc LIMIT 1";
-$resul5 = $conn->query($sql5);
-
-$produtosMenosUsado = array();
-$countMenosUsado = 0;
-if ($resul5->num_rows > 0) {
-    while ($row = $resul5->fetch_assoc()) {
-        $produtosMenosUsado[] = $row;
-        $countMenosUsado = $countMenosUsado + 1;
-    }
-*/
-
 //Se for acionado algum gatilho de alerta vinculado a sessão atual, o sistema irá apresentar um erro/alerta
 //desvinculará o erro/alerta do usuário.
 if (isset($_SESSION['texto_alerta'])){
@@ -228,7 +202,7 @@ VerificaUser($conn);
                         </p>
                     </div>
                     <div class="container-util">
-                    <p>O produto mais utilizado foi: </p>
+                    <p>O produto menos utilizado foi: </p>
                         <p>
                         <?php 
                         echo $menosUsado[1] ."<br>";
