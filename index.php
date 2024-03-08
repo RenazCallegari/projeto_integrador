@@ -39,7 +39,7 @@ if(isset($_SESSION["manterLogin"])){
 }
 
 if (isset($_SESSION['texto_alerta'])){
-    echo '<div class="">' . $_SESSION['texto_alerta'] . '</div>';
+    echo '<div class="erro-box">' . $_SESSION['texto_alerta'] . '</div>';
     unset($_SESSION['texto_alerta']);
 }
 ?>

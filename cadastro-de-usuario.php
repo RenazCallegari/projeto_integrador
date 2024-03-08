@@ -1,5 +1,5 @@
 <?php
-include "banco/Connect.php";
+include "banco/connect.php";
 
 if (isset($_SESSION["id_usuario"]) AND $_SESSION["id_usuario"] =! 1){
     $msg = "Sentimos muito, mas infelizmente você não possui autorização de acesso para acessar a página usuários.";
@@ -115,16 +115,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
 
         <div class="container-forms-cadastro-usuario">
-            <form action="">
+            <form action="cadastro-de-usuario.php" method="get">
             <h2 class="login-text-2">Convidar:</h2>
-               <input type="text" name="" id="" placeholder="Email..." class="inputUser">
+               <input type="email" name="email" id="email" placeholder="Email..." class="inputUser" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     <div class="box-user-ico-2">
                         <i class='bx bx-envelope'></i>
                     </div>
                 <input type="submit" id="email-convidado">
             </form>
             <div class="container-divisao"></div>
-            <form action="">
+            <form action="cadastro-de-usuario.php" method="post">
             <h2 class="login-text-2">Alterar estado de usuario:</h2>
                <input type="text" name="" id="" placeholder="Usuario..." class="inputUser" required>
                     <div class="box-user-ico-2">
