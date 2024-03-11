@@ -493,7 +493,7 @@ body {
     align-items: center;
     justify-content: flex-end;
     box-shadow: 0 3px 0 rgb(178, 178, 178);
-    z-index: 3;
+    z-index: 2;
 }
 
 .bx-user-circle {
