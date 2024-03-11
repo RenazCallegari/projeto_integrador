@@ -15,19 +15,17 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
         if($teste){
         echo "email enviado com sucesso";
         }
-    } else {
-        echo "erro";
     }
 }
  
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $alterarUsuario = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
-    $alterarEstado = isset($_POST["estado"]) ? $_POST["estado"] : "";
- 
-    echo $alterarEstado;
+    $alterarEstado = isset($_POST["estado-usuario"]) ? $_POST["estado-usuario"] : "";
+
+    $senha = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/*."), 0, 10);
+
     if($alterarEstado == "Desativado"){
-        $sql = "UPDATE usuario SET estado='$alterarEstado', password=MD5('01001110 11000011 10100011 01101111 00100000 01110000 01101111 01110011 01110011 01101111 00100000 01101101 01100001 01101001 01110011 00100000 01100001 01100011 01100101 01110011 01110011 01100001 01110010 00100000 01101111 00100000 01110011 01101001 01110011 01110100 01100101 01101101 01100001') WHERE usuario = '$alterarUsuario'";
-        echo $sql;
+        $sql = "UPDATE usuario SET estado='$alterarEstado', password=MD5('$senha') WHERE usuario = '$alterarUsuario'";
         $resul = $conn->query($sql);
     }
    
@@ -160,7 +158,7 @@ $alterarUser = alterarUser($conn);
                <datalist id="usuarios">
                     <?php
                     foreach($alterarUser as $user){
-                        echo "<option value='".$user['usuario']."'>";
+                        echo "<option value='".$user['usuario']."'></option>";
                     }
                     ?>
                </datalist>
@@ -168,8 +166,8 @@ $alterarUser = alterarUser($conn);
                         <i class='bx bx-user' id="user-icon"></i>
                     </div>
                 <select id="estado-usuario" name="estado-usuario">
-                    <option value="ativo">Ativo</option>
-                    <option value="desligado">Desativado</option>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Desativado">Desativado</option>
                 <input type="submit" value="alterar" id="alterar-usuario">
             </form>
         </div>
