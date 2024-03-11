@@ -16,15 +16,77 @@ body {
     justify-content: center;
 }
 
+.erro-box {
+    font-size: 22px;
+    font-weight: 500;
+    color: #f38f8f;
+    background-color: #db3939;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    width: 100%;
+    text-align: center;
+    border: 3px solid #f58282;
+    border-radius: 1rem;
+}
+
+.erro-box-home {
+    font-size: 22px;
+    font-weight: 500;
+    color: #f38f8f;
+    background-color: #db3939;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    width: 100%;
+    text-align: center;
+    border: 3px solid #f58282;
+    border-radius: 1rem;
+    position: relative;
+    z-index: 100;
+}
+
+.erro-box-home a {
+    color: #f38f8f;
+    margin-left: 3rem;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: 3px solid #f58282;
+    border-radius: 1rem;
+}
+
+.erro-box-home a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.erro-box-home.fechar {
+    display: none;
+}
 
 /* =========================================== ESTRUTURAÇÃO E ESTILIZAÇÃO DA PAGINA DE LOGIN ========================================= */
+
+
 .container-inicio {
-    width: 100vw;
+    width: 95vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
+}
+
+.container-login-area {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: column;
+    background-color: ellowgreen;
+    transform: translateX(-13rem);
+    width: 23%;
+    height: 50%;
 }
 
 .container-login {
@@ -33,7 +95,6 @@ body {
     justify-content: space-around;
     flex-direction: column;
     background-color: yellowgree;
-    transform: translateX(-13rem);
 }
 
 .container-simbolo {
@@ -224,15 +285,6 @@ body {
 
 
 
-
-
-/* ADICIONAR AQUI ESTILIZAÇÃO E ESTRUTURAÇÃO DA CAIXA DE ERRO DEPOIS!!!!! */
-
-
-
-
-
-
 /* =========================================== RESPONSIVIDADE DA PAGINDA DE LOGIN ======================================== */
 
 @media (max-width: 450px) {
@@ -254,8 +306,6 @@ body {
         justify-content: space-around;
         flex-direction: column;
         background-color: yellowgree;
-        transform: translateX(0rem);
-        transform: translateY(-4rem);
     }
 
     .container-login form {
@@ -443,6 +493,7 @@ body {
     align-items: center;
     justify-content: flex-end;
     box-shadow: 0 3px 0 rgb(178, 178, 178);
+    z-index: 3;
 }
 
 .bx-user-circle {
@@ -819,7 +870,7 @@ table {
     width: 95%;
     height: 50vh;
     background-color: whitesmoke;
-    margin-top: -3rem;
+    margin-top: -rem;
     border-radius: 10px;
     position: absolute;
     top: 10rem;
@@ -993,7 +1044,8 @@ table, th, td {
     width: 60vw;
     display: flex;
     align-items: center;
-    justify-content: space-around
+    justify-content: space-around;
+    flex-direction: row;
 }
 
 
@@ -1014,6 +1066,7 @@ table, th, td {
     font-size: 21px;
     margin-left: 10px;
 }
+
 
 .container-form-cadastro label {
     font-size: 23px;

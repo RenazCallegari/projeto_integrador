@@ -72,7 +72,7 @@ VerificaUser();
     </style>
 </head>
 <body>
-    
+
     <!-- Janela modal de LOGOFF -->
     <div class="container-modal" id="janela-modal">
         <div class="janela-modal">
@@ -183,7 +183,6 @@ VerificaUser();
 
                 <div class="container-inner">
 
-    <!-- containeres "uteis" (vi no figma que eles ainda não tem um proposito expedifico) -->
                     <div class="container-util">
                     <p>O produto mais utilizado foi: </p>
                         <p>
@@ -224,6 +223,8 @@ VerificaUser();
 
         </div>
     
+    <div class="erro-box-home" id="erro-box-home">Lorem ipsum dolor sit amet consectetur adipisicing. <a id="fechar" onclick="fecharErro()">X</a></div>
+
     <footer>
         <div class="container-footer">
             <a>Todos os direitos reservados &copy; Can Say | 2024 - &infin;</a>

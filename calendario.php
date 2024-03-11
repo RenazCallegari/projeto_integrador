@@ -114,7 +114,6 @@ VerificaUser();
                     <th>Marca</th>
                     <th>Tipo</th>
                     <th>Validade</th>
-                    <th>Dias para vencer</th>
                     <th>Estado</th>
                 </tr>
                 <?php 

@@ -1,28 +1,58 @@
 <?php
 include "banco/connect.php";
-
+ 
 if (isset($_SESSION["id_usuario"]) AND $_SESSION["id_usuario"] =! 1){
     $msg = "Sentimos muito, mas infelizmente você não possui autorização de acesso para acessar a página usuários.";
     $_SESSION["texto_alerta"] = $msg;
     header("Location: home.php");
     exit();
 }
-
+ 
 if($_SERVER["REQUEST_METHOD"] == "GET"){
-    $enviarEmail = isset($_POST["email"]) ? $_POST["email"] : "";
-    if($enviarEmail != '' AND filter_var($enviarEmail, FILTER_VALIDATE_EMAIL)){
-        mail($enviarEmail,"Convite de cadastro no sistema",random_int());
+    $enviarEmail = isset($_GET["email"]) ? $_GET["email"] : "";
+    if($enviarEmail != '' AND filter_var($enviarEmail, FILTER_VALIDATE_EMAIL) == TRUE){
+        $teste = mail($enviarEmail,"Convite de cadastro no sistema","Olá testador");
+        if($teste){
+        echo "email enviado com sucesso";
+        }
     } else {
-        echo "olá mundo";
+        echo "erro";
     }
 }
-
+ 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $alterarUser = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
-    $alterarSenha = isset($_POST["senha"]) ? $_POST["senha"] : "";
+    $alterarUsuario = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
+    $alterarEstado = isset($_POST["estado"]) ? $_POST["estado"] : "";
+ 
+    echo $alterarEstado;
+    if($alterarEstado == "Desativado"){
+        $sql = "UPDATE usuario SET estado='$alterarEstado', password=MD5('01001110 11000011 10100011 01101111 00100000 01110000 01101111 01110011 01110011 01101111 00100000 01101101 01100001 01101001 01110011 00100000 01100001 01100011 01100101 01110011 01110011 01100001 01110010 00100000 01101111 00100000 01110011 01101001 01110011 01110100 01100101 01101101 01100001') WHERE usuario = '$alterarUsuario'";
+        echo $sql;
+        $resul = $conn->query($sql);
+    }
+   
+    if($alterarEstado == "Ativo"){
+        $sql = "UPDATE usuario SET estado='$alterarEstado', password=password('12345') WHERE usuario ='$alterarUsuario'";
+        $resul = $conn->query($sql);
+    }
 }
+ 
+function alterarUser($conn){
+    $sql = "SELECT id_usuario, usuario FROM usuario";
+    $resul = $conn->query($sql);
+ 
+    $usuariosBD = array();
+    if ($resul->num_rows > 0) {
+        while ($row = $resul->fetch_assoc()) {
+            $usuariosBD[] = $row;
+        }
+    }
+    return $usuariosBD;
+}
+ 
+$alterarUser = alterarUser($conn);
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -31,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Cadastro de usuario</title>
     <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+ 
     <style>
         body {
             background-color: white;
@@ -39,27 +69,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-    
+   
     <div class="container-modal" id="janela-modal">
         <div class="janela-modal">
             <p>Deseja Realmente sair?</p>
             <div class="container-btn">
                 <button class="btn" id="fechar" onclick="fecharPopup()">Voltar</button>
-                <form action="logout.php" method="get">
-                    <input type="hidden" name="sair" value="sair">
-                    <button type="submit" class="btn" id="logoff">Sair</button>
-                </form>
+                <button class="btn" id="logoff">Sair</button>
             </div>
         </div>
     </div>
-
+ 
     <!-- Barra de navegação lateral -->
     <nav class="sidebar">
        
         <div class="btn-expandir">
             <i class='bx bx-menu' id="btn-exp"></i>
         </div>
-
+ 
         <!-- lista de itens dentro da barra lateral -->
         <ul>
             <li class="item-menu">
@@ -93,9 +120,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </a>
             </li>
         </ul>
-    
+   
     </nav>
-
+ 
     <!-- Header -->
     <header>
         <div class="container-header">
@@ -110,13 +137,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
         </div>
     </header>
-
+ 
     <div class="container-cadastro-usuario">
-        
+       
         <div class="label-cadastro-usuario">
             <p>Cadastro de Usuario:</p>
         </div>
-
+ 
         <div class="container-forms-cadastro-usuario">
             <form action="cadastro-de-usuario.php" method="get">
             <h2 class="login-text-2">Convidar:</h2>
@@ -127,21 +154,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" id="email-convidado">
             </form>
             <div class="container-divisao"></div>
-            <form action="cadastro-de-usuario.php" method="">
+            <form action="cadastro-de-usuario.php" method="post">
             <h2 class="login-text-2">Alterar estado de usuario:</h2>
-               <input type="text" name="" id="" placeholder="Usuario..." class="inputUser" required>
+               <input list="usuarios" name="usuario" id="usuario" placeholder="Usuario..." class="inputUser" required>
+               <datalist id="usuarios">
+                    <?php
+                    foreach($alterarUser as $user){
+                        echo "<option value='".$user['usuario']."'>";
+                    }
+                    ?>
+               </datalist>
                     <div class="box-user-ico-2">
                         <i class='bx bx-user' id="user-icon"></i>
                     </div>
                 <select id="estado-usuario" name="estado-usuario">
-                    <option value="ativo">ativo</option>
-                    <option value="desligado">desligado</option>
+                    <option value="ativo">Ativo</option>
+                    <option value="desligado">Desativado</option>
                 <input type="submit" value="alterar" id="alterar-usuario">
             </form>
         </div>
-
+ 
     </div>
-
+ 
     <footer>
         <div class="container-footer">
             <a>Todos os direitos reservados &copy; Can Say | 2024 - &infin;</a>
@@ -149,8 +183,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </footer>
  
 <script src="https://unpkg.com/scrollreveal"></script>
-
+ 
 <script src="js/script.js"></script>
-
+ 
 </body>
 </html>

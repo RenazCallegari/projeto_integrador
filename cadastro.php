@@ -169,19 +169,21 @@ $tipo = procuraProduto('tipo',$conn);
             </div>
             <div class="pausa"></div>
             <div class="container-input">
-                <label for="estado-prod">Estado:<select id="estado-prod" name="estado-prod">
+                <label for="estado-prod" style="transform: translateX(3rem);">Estado:<select id="estado-prod" name="estado-prod">
                         <option value="aberto">Aberto</option>
-                        <option value="fechado">Fechado</option>
+                        <option value="lacrado">Lacrado</option>
                     </select>
                 </label>
-                <label for="validade-prod">Validade:<input type="date" id="validade-prod" name="validade-prod"></label>
+                <label for="validade-prod" style="transform: translateX(5rem);">Validade:<input type="date" id="validade-prod" name="validade-prod"></label>
+                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade mínima:<input type="number" id="quantidade-prod" name="quantidade-prod-min" style="width: 20%;"></label>
+                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade atual:<input type="number" id="quantidade-prod" name="quantidade-prod-atu" style="width: 20%;"></label>
+                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade ideal:<input type="number" id="quantidade-prod" name="quantidade-prod-max" style="width: 20%;"></label>
             </div>
             <div class="pausa"></div>
             <div class="container-input">
                 <input type="submit" id="cadastro-enviar">
             </div>
         </form>
-
     </div>
 
     <footer>
