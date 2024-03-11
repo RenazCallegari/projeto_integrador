@@ -870,10 +870,11 @@ table {
     width: 95%;
     height: 50vh;
     background-color: whitesmoke;
-    margin-top: -rem;
+    margin-top: -5rem;
     border-radius: 10px;
     position: absolute;
     top: 10rem;
+    margin-bottom: 2rem;
 }
 
 
