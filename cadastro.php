@@ -10,17 +10,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $tipoProduto = isset($_POST["tipo-prod"]) ? $_POST["tipo-prod"] : "";
     $validadeProduto = isset($_POST["validade-prod"]) ? $_POST["validade-prod"] : "";
     $estadoProduto = isset($_POST["estado-prod"]) ? $_POST["estado-prod"] : "";
+    $quantMin = isset($_POST["quantidade-prod-min"]) ? $_POST["quantidade-prod-min"] : "";
+    $quantAtu = isset($_POST["quantidade-prod-atu"]) ? $_POST["quantidade-prod-atu"] : "";
+    $quantMax = isset($_POST["quantidade-prod-max"]) ? $_POST["quantidade-prod-max"] : "";
+
+    $sql = "INSERT INTO produto (nome_produto, marca, base, tipo) VALUES ('$nomeProduto','$marcaProduto','$baseProduto','$tipoProduto')";
+    $resul = $conn->query($sql);
+
+    $sql = "SELECT id_produto FROM produto WHERE nome_produto = '$nomeProduto' AND base = '$baseProduto' AND marca = '$marcaProduto' AND tipo = '$tipoProduto'";
+    $resul = $conn->query($sql);
+    if ($resul->num_rows > 0) {
+        while ($row = $resul->fetch_assoc()) {
+            $estoqueDB[] = $row;
+        }
+        foreach($estoqueDB as $estoque){
+            $sql = "INSERT INTO estoque (id_produto_fk, id_usuario_fk, quant_min, quant_atual, quant_ideal) VALUES ('".$estoque['id_produto']."','{$_SESSION['id_usuario']}', '$quantMin', '$quantAtu', '$quantMax')";
+            $resul = $conn->query($sql);
+        }
+    }
 
     $sql = "SELECT id_produto FROM produto WHERE nome_produto = '$nomeProduto' AND base = '$baseProduto' AND marca = '$marcaProduto' AND tipo = '$tipoProduto'";
     $resul = $conn->query($sql);
     $validadeDB = array();
+    $cont = 0;
     if ($resul->num_rows > 0) {
         while ($row = $resul->fetch_assoc()) {
             $validadeDB[] = $row;
         }
         foreach($validadeDB as $validade){
+            while($cont < $quantAtu){
             $sql = "INSERT INTO validade (id_produto_fk, validade, estado) VALUES (".$validade['id_produto'].",'$validadeProduto','$estadoProduto')";
             $resul = $conn->query($sql);
+            $cont ++;
+                }
             }
     }
 }
@@ -130,8 +152,8 @@ $tipo = procuraProduto('tipo',$conn);
 
         <form action="cadastro.php" method="post">
             <div class="container-input">
-                <label for="nome-prod">Nome:<input list="produtos" id="nome-prod" name="nome-prod" />
-                    <datalist id="produtos">
+                <label for="nome-prod">Nome:<input list="nomes" id="nome-prod" name="nome-prod" />
+                    <datalist id="nomes">
                             <?php
                             foreach ($nome as $n){
                                 echo "<option value='".$n['nome_produto']."'></option>";
@@ -139,24 +161,26 @@ $tipo = procuraProduto('tipo',$conn);
                             ?>
                     </datalist>    
                 </label>
-                <label for="marca-prod">Marca:<select id="marca-prod" name="marca-prod">
+                <label for="marca-prod">Marca:<input list="marcas" id="marca-prod" name="marca-prod">
+                    <datalist id="marcas">
                             <?php
                             foreach ($marca as $m){
                                 echo "<option value='".$m['marca']."'>".$m['marca']."</option>";
                             }
                             ?>
-                    </select>
+                    </datalist>    
                 </label>
             </div>
             <div class="pausa"></div>
             <div class="container-input">
-                 <label for="base-prod">Base:<select id="base-prod" name="base-prod">
+                 <label for="base-prod">Base:<input list="bases" id="base-prod" name="base-prod">
+                     <datalist id="bases">
                             <?php
                             foreach ($base as $b){
                                 echo "<option value='".$b['base']."'>".$b['base']."</option>";
                             }
                             ?>
-                        </select>
+                        </datalist>    
                     </label>
                     <label for="tipo-prod">Tipo:<select id="tipo-prod" name="tipo-prod">
                              <?php
@@ -170,8 +194,8 @@ $tipo = procuraProduto('tipo',$conn);
             <div class="pausa"></div>
             <div class="container-input">
                 <label for="estado-prod" style="transform: translateX(3rem);">Estado:<select id="estado-prod" name="estado-prod">
-                        <option value="aberto">Aberto</option>
                         <option value="lacrado">Lacrado</option>
+                        <option value="aberto">Aberto</option>
                     </select>
                 </label>
                 <label for="validade-prod" style="transform: translateX(5rem);">Validade:<input type="date" id="validade-prod" name="validade-prod"></label>

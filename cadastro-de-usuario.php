@@ -73,7 +73,10 @@ $alterarUser = alterarUser($conn);
             <p>Deseja Realmente sair?</p>
             <div class="container-btn">
                 <button class="btn" id="fechar" onclick="fecharPopup()">Voltar</button>
-                <button class="btn" id="logoff">Sair</button>
+                <form action="logout.php" method="get">
+                    <input type="hidden" name="sair" value="sair">
+                    <button type="submit" class="btn" id="logoff">Sair</button>
+                </form>
             </div>
         </div>
     </div>
