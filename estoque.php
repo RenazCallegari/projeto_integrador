@@ -128,7 +128,7 @@ VerificaUser();
                     } else {
                         echo "<td>Tudo Certo!</td>";
                     }
-                    echo "<td><a href='editar-produto.php'><i class='bx bxs-edit'></i></a></td>";
+                    echo "<td><a href='editar-produto.php?id=". $produto['id_produto']."'><i class='bx bxs-edit'></i></a></td>";
                     echo "</tr>";
                 }
                 ?>
