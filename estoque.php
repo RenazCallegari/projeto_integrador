@@ -4,6 +4,12 @@ include "banco/connect.php";
 
 $produtosBD = estoqueCritico($conn);
 VerificaUser();
+
+if (isset($_SESSION['texto_sucesso'])){
+    echo '<div class="erro-box-home">' . $_SESSION['texto_sucesso'] . '</div>';
+    echo '<a class="btn" id="fechar" onclick="fecharErro()">Voltar</a>';
+    unset($_SESSION['texto_sucesso']);
+}
 ?>
 
 <!DOCTYPE html>

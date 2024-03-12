@@ -52,7 +52,6 @@ $nome = procuraProduto('nome',$conn);
 $marca = procuraProduto('marca',$conn);
 $base = procuraProduto('base',$conn);
 $tipo = procuraProduto('tipo',$conn);
-
 ?>
 
 <!DOCTYPE html>
@@ -165,7 +164,7 @@ $tipo = procuraProduto('tipo',$conn);
                     <datalist id="marcas">
                             <?php
                             foreach ($marca as $m){
-                                echo "<option value='".$m['marca']."'>".$m['marca']."</option>";
+                                echo "<option value='".$m['marca']."'></option>";
                             }
                             ?>
                     </datalist>    
@@ -177,7 +176,7 @@ $tipo = procuraProduto('tipo',$conn);
                      <datalist id="bases">
                             <?php
                             foreach ($base as $b){
-                                echo "<option value='".$b['base']."'>".$b['base']."</option>";
+                                echo "<option value='".$b['base']."'></option>";
                             }
                             ?>
                         </datalist>    
