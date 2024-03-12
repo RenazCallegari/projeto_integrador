@@ -66,6 +66,32 @@ function estoqueCritico($conn){
     return $produtosBD;
 }
 
+function alterarUser($conn){
+    $sql = "SELECT id_usuario, usuario FROM usuario";
+    $resul = $conn->query($sql);
+ 
+    $usuariosBD = array();
+    if ($resul->num_rows > 0) {
+        while ($row = $resul->fetch_assoc()) {
+            $usuariosBD[] = $row;
+        }
+    }
+    return $usuariosBD;
+}
+
+function todosCursos($conn){
+    $sql = "SELECT DISTINCT curso FROM usuario";
+    $resul = $conn->query($sql);
+ 
+    $cursosBD = array();
+    if ($resul->num_rows > 0) {
+        while ($row = $resul->fetch_assoc()) {
+            $cursosBD[] = $row;
+        }
+    }
+    return $cursosBD;
+}
+
 function countUsos($tipo, $conn){
 
     if($tipo == "ASC"){

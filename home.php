@@ -44,14 +44,6 @@ $menosUsado = countUsos($tipo,$conn);
 $tipo = "DESC";
 $maisUsado = countUsos($tipo,$conn);
 
-//Se for acionado algum gatilho de alerta vinculado a sessão atual, o sistema irá apresentar um erro/alerta
-//desvinculará o erro/alerta do usuário.
-if (isset($_SESSION['texto_alerta'])){
-    echo '<div class="erro-box-home">' . $_SESSION['texto_alerta'] . '</div>';
-    echo '<a class="btn" id="fechar" onclick="fecharErro()">Voltar</a>';
-    unset($_SESSION['texto_alerta']);
-}
-
 VerificaUser();
 
 ?>
@@ -222,9 +214,17 @@ VerificaUser();
                 </div>
 
         </div>
+    <?php
     
-    <div class="erro-box-home" id="erro-box-home">Lorem ipsum dolor sit amet consectetur adipisicing. <a id="fechar" onclick="fecharErro()">X</a></div>
+    //Se for acionado algum gatilho de alerta vinculado a sessão atual, o sistema irá apresentar um erro/alerta
+    //desvinculará o erro/alerta do usuário.
+    if (isset($_SESSION['texto_alerta'])){
+        echo '<div class="erro-box-home" id="erro-box-home">' . $_SESSION['texto_alerta'] . '</div>';
+        echo '<a class="btn" id="fechar" onclick="fecharErro()">Voltar</a>';
+        unset($_SESSION['texto_alerta']);
+    }
 
+    ?>
     <footer>
         <div class="container-footer">
             <a>Todos os direitos reservados &copy; Can Say | 2024 - &infin;</a>

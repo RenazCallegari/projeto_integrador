@@ -8,19 +8,29 @@ if (isset($_SESSION["id_usuario"]) AND $_SESSION["id_usuario"] =! 1){
     exit();
 }
  
-if($_SERVER["REQUEST_METHOD"] == "GET"){
-    $enviarEmail = isset($_GET["email"]) ? $_GET["email"] : "";
-    if($enviarEmail != '' AND filter_var($enviarEmail, FILTER_VALIDATE_EMAIL) == TRUE){
-        $teste = mail($enviarEmail,"Convite de cadastro no sistema","Olá testador");
-        if($teste){
-        echo "email enviado com sucesso";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $usuario = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
+    $usuario = ucfirst($usuario);
+    $senha = isset($_POST["senha"]) ? $_POST["senha"] : "";
+    $curso = isset($_POST["curso"]) ? $_POST["curso"] : "";
+    if($usuario !="" and $senha !="" and $curso !=""){
+        if($usuario != "Admin" AND $usuario != "admin" AND $usuario != "ADMIN"){
+            $sql = "INSERT INTO usuario (usuario, password, curso, estado) VALUES ('$usuario','$senha','$curso','Ativo')";
+            $resul = $conn->query($sql);
+            if($resul){
+                echo "Novo usuário inserido com sucesso!";
+            }
+        } else {
+            echo "Infelizmente o nome Admin está armazenada no sistema, por favor utilize outro.";
         }
+    } else {
+        echo "Erro ao inserir dados, credenciais possivelmente vazias";
     }
 }
  
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $alterarUsuario = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
-    $alterarEstado = isset($_POST["estado-usuario"]) ? $_POST["estado-usuario"] : "";
+if($_SERVER["REQUEST_METHOD"] == "GET"){
+    $alterarUsuario = isset($_GET["usuario"]) ? $_GET["usuario"] : "";
+    $alterarEstado = isset($_GET["estado-usuario"]) ? $_GET["estado-usuario"] : "";
 
     $senha = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/*."), 0, 10);
 
@@ -34,21 +44,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $resul = $conn->query($sql);
     }
 }
- 
-function alterarUser($conn){
-    $sql = "SELECT id_usuario, usuario FROM usuario";
-    $resul = $conn->query($sql);
- 
-    $usuariosBD = array();
-    if ($resul->num_rows > 0) {
-        while ($row = $resul->fetch_assoc()) {
-            $usuariosBD[] = $row;
-        }
-    }
-    return $usuariosBD;
-}
- 
+
 $alterarUser = alterarUser($conn);
+$todosCursos = todosCursos($conn);
 ?>
  
 <!DOCTYPE html>
@@ -146,16 +144,32 @@ $alterarUser = alterarUser($conn);
         </div>
  
         <div class="container-forms-cadastro-usuario">
-            <form action="cadastro-de-usuario.php" method="get">
+            <form action="cadastro-de-usuario.php" method="post">
             <h2 class="login-text-2">Convidar:</h2>
-               <input type="email" name="email" id="email" placeholder="Email..." class="inputUser" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+               <input type="text" name="usuario" id="usuario" placeholder="Usuário..." class="inputUser" required>
+               <div class="box-user-ico-2">
+                    <i class='bx bx-user' id="user-icon"></i>
+                </div>
+               <label for="senha"> <i class='bx bx-show'id="MostrarSenha" onclick="MostrarSenha()"></i></label>
+               <input type="password" name="senha" id="senha" placeholder="Senha..." class="inputUser" required>
+               <div class="box-lock-ico">
+                    <i class='bx bx-lock'></i>
+                </div>
+               <input list="cursos" name="curso" id="curso" placeholder="Curso..." class="inputUser" required>
+               <datalist id="cursos">
+                    <?php
+                    foreach($todosCursos as $curso){
+                        echo "<option value='".$curso['curso']."'></option>";
+                    }
+                    ?>
+               </datalist>
                     <div class="box-user-ico-2">
                         <i class='bx bx-envelope'></i>
                     </div>
                 <input type="submit" id="email-convidado">
             </form>
             <div class="container-divisao"></div>
-            <form action="cadastro-de-usuario.php" method="post">
+            <form action="cadastro-de-usuario.php" method="get">
             <h2 class="login-text-2">Alterar estado de usuario:</h2>
                <input list="usuarios" name="usuario" id="usuario" placeholder="Usuario..." class="inputUser" required>
                <datalist id="usuarios">

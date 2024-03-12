@@ -67,6 +67,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE validade SET validade='$validadeProduto', estado='$estadoProduto' WHERE id_produto_fk=$idProduto";
     $resul = $conn->query($sql);
 
+    if($estadoProduto == "vazio"){
+        $sql = $sql = "SELECT estado FROM validade WHERE id_produto_fk=$idProduto AND estado='Vazio'";
+        $resul = $conn->query($sql);
+        $produtoModifica = array();
+        $cont = 0;
+        if ($resul->num_rows >0) {
+            while ($row = $resul->fetch_assoc()) {
+                $produtoModifica[] = $row;
+                $cont = $cont + 1;
+            }
+            foreach ($produtoModifica as $produto){
+                $sql = "UPDATE estoque SET usos='$cont' WHERE id_produto_fk=$idProduto";
+                $resul = $conn->query($sql);
+            }
+    }
+
     if($resul){
         $msg = "Alteração realizada com sucesso!";
         $_SESSION["texto_sucesso"] = $msg;
@@ -220,8 +236,9 @@ $tipo = procuraProduto('tipo',$conn);
             <div class="pausa"></div>
             <div class="container-input">
                 <label for="estado-prod" style="transform: translateX(3rem);">Estado:<select id="estado-prod" name="estado-prod" value="<?php echo $estadoMudar?>">
-                        <option value="lacrado">Lacrado</option>
-                        <option value="aberto">Aberto</option>
+                        <option value="Lacrado">Lacrado</option>
+                        <option value="Aberto">Aberto</option>
+                        <option value="Vazio">Vazio</option>
                     </select>
                 </label>
                 <label for="validade-prod" style="transform: translateX(5rem);">Validade:<input type="date" id="validade-prod" name="validade-prod" value="<?php echo $validadeMudar?>"></label>

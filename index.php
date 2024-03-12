@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             exit();
         //Caso a senha esteja errada ou vazia emite um alerta.
         } else {
-            $msg = "<div class='alert alert-danger' role='alert'>Usuário ou senha incorretos.</div>";
+            $msg = "<div class='erro-box' role='alert'>Usuário ou senha incorretos.</div>";
         }
     }
 }
