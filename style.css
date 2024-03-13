@@ -217,7 +217,7 @@ body {
 
 }
 
-.bx-show {
+#MostrarSenha {
     position: absolute;
     top: 6.7rem;
     left: 23.5rem;
@@ -226,7 +226,7 @@ body {
     font-size: 2rem;
 }
 
-.bx-show:hover {
+#MostrarSenha:hover {
     font-size: 2.1rem;
     cursor: pointer;
     transform: translate(-1px);
@@ -1031,6 +1031,7 @@ table, th, td {
     justify-content: space-around;
     flex-direction: column;
     flex-wrap: wrap;
+
 }
 
 .pausa {
@@ -1042,13 +1043,20 @@ table, th, td {
 }
 
 .container-input {
-    width: 60vw;
+    width: 75vw;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
 }
 
+#container-input {
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
 
 .container-form-cadastro input {
     padding: 10px 10px;
@@ -1164,7 +1172,7 @@ table, th, td {
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    height: 40%;
+    height: 45%;
     width: 26.3%;
     margin-bottom: 12rem;
     background-color: lue; 
@@ -1202,12 +1210,12 @@ table, th, td {
     border-radius: 1rem;
 }
 
-#email-convidado {
+#cadastrar {
     width: 99%;
     transition: .2s ease;
 }
 
-#email-convidado:hover {
+#cadastrar:hover {
     background-color: #c9c9c9;
     cursor: pointer;
     color: #fff;
