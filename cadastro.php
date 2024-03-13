@@ -151,7 +151,7 @@ $tipo = procuraProduto('tipo',$conn);
 
         <form action="cadastro.php" method="post">
             <div class="container-input">
-                <label for="nome-prod">Nome:<input list="nomes" id="nome-prod" name="nome-prod" />
+                <label for="nome-prod">Nome:<input list="nomes" id="nome-prod" name="nome-prod" required/>
                     <datalist id="nomes">
                             <?php
                             foreach ($nome as $n){
@@ -160,7 +160,7 @@ $tipo = procuraProduto('tipo',$conn);
                             ?>
                     </datalist>    
                 </label>
-                <label for="marca-prod">Marca:<input list="marcas" id="marca-prod" name="marca-prod">
+                <label for="marca-prod">Marca:<input list="marcas" id="marca-prod" name="marca-prod" required>
                     <datalist id="marcas">
                             <?php
                             foreach ($marca as $m){
@@ -172,7 +172,7 @@ $tipo = procuraProduto('tipo',$conn);
             </div>
             <div class="pausa"></div>
             <div class="container-input">
-                 <label for="base-prod">Base:<input list="bases" id="base-prod" name="base-prod">
+                 <label for="base-prod">Base:<input list="bases" id="base-prod" name="base-prod" required>
                      <datalist id="bases">
                             <?php
                             foreach ($base as $b){
@@ -181,7 +181,7 @@ $tipo = procuraProduto('tipo',$conn);
                             ?>
                         </datalist>    
                     </label>
-                    <label for="tipo-prod">Tipo:<select id="tipo-prod" name="tipo-prod">
+                    <label for="tipo-prod">Tipo:<select id="tipo-prod" name="tipo-prod" required>
                              <?php
                             foreach ($tipo as $t){
                                 echo "<option value='".$t['tipo']."'>".$t['tipo']."</option>";
@@ -192,15 +192,15 @@ $tipo = procuraProduto('tipo',$conn);
             </div>
             <div class="pausa"></div>
             <div class="container-input">
-                <label for="estado-prod" style="transform: translateX(3rem);">Estado:<select id="estado-prod" name="estado-prod">
+                <label for="estado-prod" style="transform: translateX(3rem);">Estado:<select id="estado-prod" name="estado-prod" required>
                         <option value="lacrado">Lacrado</option>
                         <option value="aberto">Aberto</option>
                     </select>
                 </label>
-                <label for="validade-prod" style="transform: translateX(5rem);">Validade:<input type="date" id="validade-prod" name="validade-prod"></label>
-                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade mínima:<input type="number" id="quantidade-prod" name="quantidade-prod-min" style="width: 20%;"></label>
-                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade atual:<input type="number" id="quantidade-prod" name="quantidade-prod-atu" style="width: 20%;"></label>
-                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade ideal:<input type="number" id="quantidade-prod" name="quantidade-prod-max" style="width: 20%;"></label>
+                <label for="validade-prod" style="transform: translateX(5rem);">Validade:<input type="date" id="validade-prod" name="validade-prod" required></label>
+                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade mínima:<input type="number" id="quantidade-prod" name="quantidade-prod-min" style="width: 20%;" min="0" required></label>
+                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade atual:<input type="number" id="quantidade-prod" name="quantidade-prod-atu" style="width: 20%;" min="0" required></label>
+                <label for="quantidade-prod" style="transform: translateX(9rem);">quantidade ideal:<input type="number" id="quantidade-prod" name="quantidade-prod-max" style="width: 20%;" min="0"></label>
             </div>
             <div class="pausa"></div>
             <div class="container-input">

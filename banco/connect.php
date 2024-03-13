@@ -13,7 +13,7 @@ $user = "root";
 $password = "";
 //Uma senha vazia.
  
-$bd = "estetica_v1_0";
+$bd = "id21965817_db_estetcontrol";
  
 $conn = new mysqli($host, $user, $password, $bd);
 //conn vem de connection.
@@ -95,7 +95,7 @@ function todosCursos($conn){
 function countUsos($tipo, $conn){
 
     if($tipo == "ASC"){
-        $sql = "SELECT * FROM validade,estoque,produto WHERE estado='Vazio' ORDER BY 'usos' ASC LIMIT 1";
+        $sql = "SELECT * FROM estoque,produto ORDER BY 'usos' ASC LIMIT 1";
         $resul = $conn->query($sql);
 
         $produtoUsado = array();
@@ -111,7 +111,7 @@ function countUsos($tipo, $conn){
         }
     }
     if($tipo == "DESC"){
-        $sql = "SELECT * FROM validade,estoque,produto WHERE estado='Vazio' ORDER BY 'usos' DESC LIMIT 1";
+        $sql = "SELECT * FROM estoque,produto ORDER BY 'usos' DESC LIMIT 1";
         $resul = $conn->query($sql);
 
         $produtoUsado = array();
